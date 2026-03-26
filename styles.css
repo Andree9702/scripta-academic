@@ -1315,3 +1315,31 @@ button {
     animation: none;
   }
 }
+
+/* ----------------------------------------------------------------
+   REACT COMPONENT ISOLATION
+   Prevents global resets from breaking embedded React components.
+   ---------------------------------------------------------------- */
+.react-widget {
+  max-width: 620px;
+  margin: 0 auto;
+  /* Reset inherited text color from .section--dark / .section--light */
+  color: #1f2937;
+}
+
+/* Restore button styling inside React components */
+.react-widget button {
+  background: revert;
+  border: revert;
+}
+
+/* Restore link styling inside React components */
+.react-widget a {
+  color: revert;
+  transition: none;
+}
+
+/* Prevent inherited list resets */
+.react-widget ul {
+  list-style: revert;
+}
