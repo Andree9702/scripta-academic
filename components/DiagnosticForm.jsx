@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import styles from './DiagnosticForm.module.css';
 
 // ─── Constants ─────────────────────────────────────────────────────────────────
 
@@ -164,7 +163,7 @@ function calculatePrice(serviceKey, pages, urgencyMult, needsTranslation) {
 
 function IconClipboard() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, color: '#0d9488' }}>
       <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
       <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
       <path d="M9 14l2 2 4-4" />
@@ -227,6 +226,611 @@ function IconChevron({ size = 16 }) {
     </svg>
   );
 }
+
+// ─── Inline Style Constants ─────────────────────────────────────────────────────
+
+const S = {
+  wizard: {
+    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    maxWidth: 600,
+    width: '100%',
+    margin: '0 auto',
+    background: '#ffffff',
+    borderRadius: 16,
+    boxShadow: '0 4px 24px rgba(26,35,50,0.10), 0 1px 4px rgba(26,35,50,0.06)',
+    overflow: 'hidden',
+    color: '#1f2937',
+  },
+  header: {
+    background: 'linear-gradient(135deg, #1a2332 0%, #243044 100%)',
+    padding: '24px 28px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 12,
+  },
+  headerIcon: {
+    width: 40,
+    height: 40,
+    background: 'rgba(13,148,136,0.15)',
+    borderRadius: 10,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  headerTitle: {
+    fontSize: '1.25rem',
+    fontWeight: 700,
+    color: '#ffffff',
+    margin: 0,
+    letterSpacing: '-0.01em',
+  },
+  headerSubtitle: {
+    fontSize: '0.8rem',
+    color: 'rgba(255,255,255,0.6)',
+    margin: '2px 0 0',
+  },
+  progress: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '16px 28px',
+    gap: 0,
+    background: '#f9fafb',
+    borderBottom: '1px solid #e5e7eb',
+  },
+  progressStep: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 6,
+    flexShrink: 0,
+  },
+  progressDot: {
+    width: 28,
+    height: 28,
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '0.7rem',
+    fontWeight: 700,
+    border: '2px solid #e5e7eb',
+    background: '#fff',
+    color: '#6b7280',
+    transition: 'all 0.3s',
+  },
+  progressDotActive: {
+    borderColor: '#0d9488',
+    background: '#0d9488',
+    color: '#fff',
+  },
+  progressLine: {
+    flex: 1,
+    height: 2,
+    background: '#e5e7eb',
+    margin: '0 4px',
+    transition: 'background 0.3s',
+  },
+  progressLineActive: {
+    background: '#0d9488',
+  },
+  body: {
+    padding: '24px 28px 28px',
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  slideContainer: {
+    display: 'flex',
+    transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)',
+  },
+  slide: {
+    minWidth: '100%',
+    flexShrink: 0,
+  },
+  stepQuestion: {
+    fontSize: '1.05rem',
+    fontWeight: 600,
+    color: '#1a2332',
+    margin: '0 0 16px',
+    lineHeight: 1.4,
+  },
+  optionCards: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8,
+  },
+  optionCard: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: 12,
+    padding: '14px 16px',
+    border: '1.5px solid #e5e7eb',
+    borderRadius: 10,
+    background: '#fff',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+    textAlign: 'left',
+    fontFamily: 'inherit',
+    width: '100%',
+    boxSizing: 'border-box',
+    fontSize: 'inherit',
+  },
+  optionCardActive: {
+    borderColor: '#0d9488',
+    background: 'rgba(13,148,136,0.05)',
+    boxShadow: '0 0 0 3px rgba(13,148,136,0.1)',
+  },
+  optionEmoji: {
+    fontSize: '1.3rem',
+    lineHeight: 1,
+    flexShrink: 0,
+    marginTop: 1,
+  },
+  optionText: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 2,
+  },
+  optionTitle: {
+    fontSize: '0.88rem',
+    fontWeight: 600,
+    color: '#1f2937',
+  },
+  optionTitleActive: {
+    color: '#0d9488',
+  },
+  optionDesc: {
+    fontSize: '0.78rem',
+    color: '#6b7280',
+    lineHeight: 1.4,
+  },
+  formGrid: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 16,
+  },
+  field: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 5,
+  },
+  fieldLabel: {
+    fontSize: '0.8rem',
+    fontWeight: 600,
+    color: '#1f2937',
+  },
+  req: {
+    color: '#ef4444',
+    marginLeft: 2,
+  },
+  fieldHint: {
+    fontSize: '0.72rem',
+    color: '#6b7280',
+    fontWeight: 400,
+  },
+  input: {
+    width: '100%',
+    padding: '10px 14px',
+    border: '1.5px solid #e5e7eb',
+    borderRadius: 8,
+    fontSize: '0.88rem',
+    fontFamily: 'inherit',
+    color: '#1f2937',
+    background: '#fff',
+    outline: 'none',
+    transition: 'border-color 0.2s',
+    boxSizing: 'border-box',
+  },
+  inputError: {
+    borderColor: '#ef4444',
+  },
+  errorMsg: {
+    fontSize: '0.72rem',
+    color: '#ef4444',
+    marginTop: -2,
+  },
+  selectWrapper: {
+    position: 'relative',
+  },
+  select: {
+    width: '100%',
+    padding: '10px 36px 10px 14px',
+    border: '1.5px solid #e5e7eb',
+    borderRadius: 8,
+    fontSize: '0.88rem',
+    fontFamily: 'inherit',
+    color: '#1f2937',
+    background: '#fff',
+    appearance: 'none',
+    WebkitAppearance: 'none',
+    cursor: 'pointer',
+    outline: 'none',
+    transition: 'border-color 0.2s',
+    boxSizing: 'border-box',
+  },
+  selectArrow: {
+    position: 'absolute',
+    right: 12,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    pointerEvents: 'none',
+    color: '#6b7280',
+  },
+  sliderRow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 12,
+  },
+  slider: {
+    flex: 1,
+    WebkitAppearance: 'none',
+    appearance: 'none',
+    height: 6,
+    borderRadius: 3,
+    background: '#e5e7eb',
+    outline: 'none',
+    cursor: 'pointer',
+  },
+  numberInput: {
+    width: 64,
+    padding: '8px 6px',
+    border: '1.5px solid #e5e7eb',
+    borderRadius: 8,
+    fontSize: '0.88rem',
+    fontFamily: 'inherit',
+    textAlign: 'center',
+    color: '#1f2937',
+    outline: 'none',
+    transition: 'border-color 0.2s',
+    boxSizing: 'border-box',
+  },
+  sliderUnit: {
+    fontSize: '0.78rem',
+    color: '#6b7280',
+    whiteSpace: 'nowrap',
+  },
+  radioGroup: {
+    display: 'flex',
+    gap: 8,
+    flexWrap: 'wrap',
+  },
+  radioBtn: {
+    padding: '8px 16px',
+    border: '1.5px solid #e5e7eb',
+    borderRadius: 8,
+    background: '#fff',
+    fontSize: '0.82rem',
+    fontFamily: 'inherit',
+    fontWeight: 500,
+    color: '#1f2937',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+  },
+  radioBtnActive: {
+    borderColor: '#0d9488',
+    background: 'rgba(13,148,136,0.06)',
+    color: '#0d9488',
+    boxShadow: '0 0 0 3px rgba(13,148,136,0.1)',
+  },
+  urgencyGroup: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: 8,
+  },
+  urgencyPill: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 4,
+    padding: '12px 8px',
+    border: '1.5px solid #e5e7eb',
+    borderRadius: 10,
+    background: '#fff',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+    textAlign: 'center',
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
+  },
+  urgencyPillActive: {
+    borderColor: '#0d9488',
+    background: 'rgba(13,148,136,0.06)',
+    boxShadow: '0 0 0 3px rgba(13,148,136,0.1)',
+  },
+  urgencyName: {
+    fontSize: '0.82rem',
+    fontWeight: 600,
+    color: '#1f2937',
+  },
+  urgencyNameActive: {
+    color: '#0d9488',
+  },
+  urgencyTime: {
+    fontSize: '0.7rem',
+    color: '#6b7280',
+  },
+  urgencyBadge: {
+    fontSize: '0.65rem',
+    fontWeight: 600,
+    padding: '2px 6px',
+    borderRadius: 4,
+    background: '#e5e7eb',
+    color: '#6b7280',
+  },
+  urgencyBadgeActive: {
+    background: '#0d9488',
+    color: '#fff',
+  },
+  divider: {
+    height: 1,
+    background: '#e5e7eb',
+    border: 'none',
+    margin: '4px 0',
+  },
+  nav: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 24,
+    gap: 12,
+  },
+  btnBack: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 6,
+    padding: '10px 18px',
+    border: '1.5px solid #e5e7eb',
+    borderRadius: 10,
+    background: '#fff',
+    color: '#6b7280',
+    fontSize: '0.88rem',
+    fontWeight: 500,
+    fontFamily: 'inherit',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+  },
+  btnNext: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 6,
+    padding: '10px 24px',
+    border: 'none',
+    borderRadius: 10,
+    background: '#0d9488',
+    color: '#fff',
+    fontSize: '0.88rem',
+    fontWeight: 600,
+    fontFamily: 'inherit',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+    marginLeft: 'auto',
+  },
+  btnNextDisabled: {
+    background: '#d1d5db',
+    cursor: 'not-allowed',
+  },
+  resultPanel: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 20,
+  },
+  resultSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8,
+  },
+  resultSectionTitle: {
+    fontSize: '0.75rem',
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    color: '#6b7280',
+    margin: 0,
+  },
+  summaryGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: 8,
+  },
+  summaryItem: {
+    padding: '10px 12px',
+    background: '#f9fafb',
+    borderRadius: 8,
+  },
+  summaryItemLabel: {
+    fontSize: '0.7rem',
+    color: '#6b7280',
+    textTransform: 'uppercase',
+    letterSpacing: '0.03em',
+    marginBottom: 2,
+  },
+  summaryItemValue: {
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    color: '#1f2937',
+  },
+  recommendedCard: {
+    padding: 16,
+    background: 'rgba(13,148,136,0.05)',
+    border: '1.5px solid rgba(13,148,136,0.2)',
+    borderRadius: 10,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 6,
+  },
+  recommendedName: {
+    fontSize: '0.95rem',
+    fontWeight: 700,
+    color: '#0d9488',
+  },
+  recommendedReason: {
+    fontSize: '0.82rem',
+    color: '#6b7280',
+    lineHeight: 1.45,
+  },
+  recommendedNote: {
+    fontSize: '0.78rem',
+    color: '#d4a853',
+    fontWeight: 500,
+    marginTop: 2,
+  },
+  priceBreakdown: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 10,
+  },
+  priceRow: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    fontSize: '0.85rem',
+  },
+  priceLabel: {
+    color: '#6b7280',
+  },
+  priceValue: {
+    fontWeight: 500,
+    color: '#1f2937',
+  },
+  priceTotal: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    padding: 16,
+    background: 'linear-gradient(135deg, #1a2332 0%, #243044 100%)',
+    borderRadius: 12,
+  },
+  priceTotalLabel: {
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    color: 'rgba(255,255,255,0.8)',
+  },
+  priceTotalValue: {
+    fontSize: '1.75rem',
+    fontWeight: 700,
+    color: '#fff',
+  },
+  priceTotalCurrency: {
+    fontSize: '1rem',
+    fontWeight: 500,
+    marginRight: 4,
+    color: 'rgba(255,255,255,0.7)',
+  },
+  paymentInfo: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    fontSize: '0.78rem',
+    color: '#6b7280',
+  },
+  paymentInfoIcon: {
+    color: '#d4a853',
+    flexShrink: 0,
+  },
+  actions: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 10,
+  },
+  ctaPrimary: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    width: '100%',
+    padding: '14px 24px',
+    background: '#0d9488',
+    color: '#fff',
+    fontSize: '0.95rem',
+    fontWeight: 600,
+    fontFamily: 'inherit',
+    border: 'none',
+    borderRadius: 10,
+    cursor: 'pointer',
+    textAlign: 'center',
+    textDecoration: 'none',
+    transition: 'background 0.2s, transform 0.1s',
+    boxSizing: 'border-box',
+  },
+  ctaRow: {
+    display: 'flex',
+    gap: 10,
+  },
+  ctaSecondary: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    padding: '11px 16px',
+    background: '#fff',
+    color: '#1a2332',
+    fontSize: '0.85rem',
+    fontWeight: 500,
+    fontFamily: 'inherit',
+    border: '1.5px solid #e5e7eb',
+    borderRadius: 10,
+    cursor: 'pointer',
+    textDecoration: 'none',
+    textAlign: 'center',
+    transition: 'all 0.2s',
+    boxSizing: 'border-box',
+  },
+  ctaWhatsapp: {
+    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    padding: '11px 16px',
+    background: '#fff',
+    color: '#25d366',
+    fontSize: '0.85rem',
+    fontWeight: 500,
+    fontFamily: 'inherit',
+    border: '1.5px solid #e5e7eb',
+    borderRadius: 10,
+    cursor: 'pointer',
+    textDecoration: 'none',
+    textAlign: 'center',
+    transition: 'all 0.2s',
+    boxSizing: 'border-box',
+  },
+};
+
+// ─── Injected CSS for pseudo-states and responsive ──────────────────────────────
+
+const INJECTED_CSS = `
+  .scripta-diag-slider::-webkit-slider-thumb { -webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:#0d9488; cursor:pointer; box-shadow:0 2px 6px rgba(13,148,136,0.3); }
+  .scripta-diag-slider::-moz-range-thumb { width:22px; height:22px; border-radius:50%; background:#0d9488; cursor:pointer; border:none; }
+  .scripta-diag-input:focus { border-color:#0d9488 !important; box-shadow:0 0 0 3px rgba(13,148,136,0.1) !important; }
+  .scripta-diag-input::placeholder { color:#9ca3af; }
+  .scripta-diag-select:focus { border-color:#0d9488 !important; box-shadow:0 0 0 3px rgba(13,148,136,0.1) !important; }
+  .scripta-diag-number-input:focus { border-color:#0d9488 !important; box-shadow:0 0 0 3px rgba(13,148,136,0.1) !important; }
+  .scripta-diag-input-error:focus { border-color:#ef4444 !important; box-shadow:0 0 0 3px rgba(239,68,68,0.1) !important; }
+  .scripta-diag-btn-next:hover:not(:disabled) { background:#0b7c72 !important; }
+  .scripta-diag-btn-back:hover { border-color:#1a2332 !important; color:#1a2332 !important; }
+  .scripta-diag-option:hover { border-color:#0d9488 !important; background:rgba(13,148,136,0.02) !important; }
+  .scripta-diag-radio:hover { border-color:#0d9488 !important; }
+  .scripta-diag-pill:hover { border-color:#0d9488 !important; background:rgba(13,148,136,0.03) !important; }
+  .scripta-diag-cta:hover { background:#0b7c72 !important; }
+  .scripta-diag-cta:active { transform:scale(0.985); }
+  .scripta-diag-cta-sec:hover { border-color:#1a2332 !important; }
+  .scripta-diag-cta-wa:hover { border-color:#25d366 !important; }
+  @keyframes scripta-diag-blink { 50% { opacity:0; } }
+  @media (max-width: 480px) {
+    .scripta-diag-wizard { border-radius:12px !important; }
+    .scripta-diag-header { padding:20px 20px !important; }
+    .scripta-diag-progress { padding:12px 20px !important; }
+    .scripta-diag-body { padding:20px 20px 24px !important; }
+    .scripta-diag-header-title { font-size:1.1rem !important; }
+    .scripta-diag-urgency-group { grid-template-columns:1fr !important; gap:6px !important; }
+    .scripta-diag-pill { flex-direction:row !important; justify-content:space-between !important; padding:10px 14px !important; }
+    .scripta-diag-summary-grid { grid-template-columns:1fr !important; }
+    .scripta-diag-price-total-value { font-size:1.5rem !important; }
+    .scripta-diag-cta-row { flex-direction:column !important; }
+    .scripta-diag-progress-dot { width:24px !important; height:24px !important; font-size:0.6rem !important; }
+  }
+`;
 
 // ─── Main Component ────────────────────────────────────────────────────────────
 
@@ -365,15 +969,22 @@ export default function DiagnosticForm() {
   function renderProgressBar() {
     const labels = ['Etapa', 'Tipo', 'Detalles', 'Contacto', 'Resultado'];
     return (
-      <div className={styles.progress}>
+      <div className="scripta-diag-progress" style={S.progress}>
         {labels.map((label, i) => (
           <React.Fragment key={i}>
             {i > 0 && (
-              <div className={`${styles.progressLine} ${i <= step ? styles.progressLineActive : ''}`} />
+              <div style={{
+                ...S.progressLine,
+                ...(i <= step ? S.progressLineActive : {}),
+              }} />
             )}
-            <div className={styles.progressStep}>
+            <div style={S.progressStep}>
               <div
-                className={`${styles.progressDot} ${i === step ? styles.progressDotActive : ''} ${i < step ? styles.progressDotDone : ''}`}
+                className="scripta-diag-progress-dot"
+                style={{
+                  ...S.progressDot,
+                  ...(i === step || i < step ? S.progressDotActive : {}),
+                }}
               >
                 {i < step ? <IconCheck size={12} /> : i + 1}
               </div>
@@ -387,23 +998,33 @@ export default function DiagnosticForm() {
   // ── Step 1: Stage ──
   function renderStep1() {
     return (
-      <div className={styles.slide}>
-        <h3 className={styles.stepQuestion}>¿En qué etapa está tu proyecto?</h3>
-        <div className={styles.optionCards}>
-          {STAGES.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              className={`${styles.optionCard} ${stage === s.id ? styles.optionCardActive : ''}`}
-              onClick={() => setStage(s.id)}
-            >
-              <span className={styles.optionEmoji}>{s.emoji}</span>
-              <span className={styles.optionText}>
-                <span className={styles.optionTitle}>{s.title}</span>
-                <span className={styles.optionDesc}>{s.desc}</span>
-              </span>
-            </button>
-          ))}
+      <div style={S.slide}>
+        <h3 style={S.stepQuestion}>¿En qué etapa está tu proyecto?</h3>
+        <div style={S.optionCards}>
+          {STAGES.map((s) => {
+            const isActive = stage === s.id;
+            return (
+              <button
+                key={s.id}
+                type="button"
+                className="scripta-diag-option"
+                style={{
+                  ...S.optionCard,
+                  ...(isActive ? S.optionCardActive : {}),
+                }}
+                onClick={() => setStage(s.id)}
+              >
+                <span style={S.optionEmoji}>{s.emoji}</span>
+                <span style={S.optionText}>
+                  <span style={{
+                    ...S.optionTitle,
+                    ...(isActive ? S.optionTitleActive : {}),
+                  }}>{s.title}</span>
+                  <span style={S.optionDesc}>{s.desc}</span>
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
     );
@@ -413,21 +1034,31 @@ export default function DiagnosticForm() {
   function renderStep2() {
     const types = getWorkTypes(stage);
     return (
-      <div className={styles.slide}>
-        <h3 className={styles.stepQuestion}>¿Qué quieres producir?</h3>
-        <div className={styles.optionCards}>
-          {types.map((t) => (
-            <button
-              key={t.id}
-              type="button"
-              className={`${styles.optionCard} ${workType === t.id ? styles.optionCardActive : ''}`}
-              onClick={() => setWorkType(t.id)}
-            >
-              <span className={styles.optionText}>
-                <span className={styles.optionTitle}>{t.label}</span>
-              </span>
-            </button>
-          ))}
+      <div style={S.slide}>
+        <h3 style={S.stepQuestion}>¿Qué quieres producir?</h3>
+        <div style={S.optionCards}>
+          {types.map((t) => {
+            const isActive = workType === t.id;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                className="scripta-diag-option"
+                style={{
+                  ...S.optionCard,
+                  ...(isActive ? S.optionCardActive : {}),
+                }}
+                onClick={() => setWorkType(t.id)}
+              >
+                <span style={S.optionText}>
+                  <span style={{
+                    ...S.optionTitle,
+                    ...(isActive ? S.optionTitleActive : {}),
+                  }}>{t.label}</span>
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
     );
@@ -436,17 +1067,18 @@ export default function DiagnosticForm() {
   // ── Step 3: Details ──
   function renderStep3() {
     return (
-      <div className={styles.slide}>
-        <h3 className={styles.stepQuestion}>Cuéntanos más sobre tu proyecto</h3>
-        <div className={styles.formGrid}>
+      <div style={S.slide}>
+        <h3 style={S.stepQuestion}>Cuéntanos más sobre tu proyecto</h3>
+        <div style={S.formGrid}>
           {/* Discipline */}
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>
-              Disciplina / área de conocimiento <span className="req">*</span>
+          <div style={S.field}>
+            <label style={S.fieldLabel}>
+              Disciplina / área de conocimiento <span style={S.req}>*</span>
             </label>
-            <div className={styles.selectWrapper}>
+            <div style={S.selectWrapper}>
               <select
-                className={styles.select}
+                className="scripta-diag-select"
+                style={S.select}
                 value={discipline}
                 onChange={(e) => { setDiscipline(e.target.value); if (e.target.value !== 'Otra') setDisciplineOther(''); }}
               >
@@ -456,12 +1088,13 @@ export default function DiagnosticForm() {
                 ))}
                 <option value="Otra">Otra</option>
               </select>
-              <span className={styles.selectArrow}><IconChevron /></span>
+              <span style={S.selectArrow}><IconChevron /></span>
             </div>
             {discipline === 'Otra' && (
               <input
                 type="text"
-                className={styles.input}
+                className="scripta-diag-input"
+                style={S.input}
                 placeholder="Especifica tu disciplina"
                 value={disciplineOther}
                 onChange={(e) => setDisciplineOther(e.target.value)}
@@ -470,12 +1103,13 @@ export default function DiagnosticForm() {
           </div>
 
           {/* Pages */}
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>Número estimado de páginas</label>
-            <div className={styles.sliderRow}>
+          <div style={S.field}>
+            <label style={S.fieldLabel}>Número estimado de páginas</label>
+            <div style={S.sliderRow}>
               <input
                 type="range"
-                className={styles.slider}
+                className="scripta-diag-slider"
+                style={S.slider}
                 min={5}
                 max={300}
                 value={pages}
@@ -483,25 +1117,30 @@ export default function DiagnosticForm() {
               />
               <input
                 type="number"
-                className={styles.numberInput}
+                className="scripta-diag-number-input"
+                style={S.numberInput}
                 min={5}
                 max={300}
                 value={pages}
                 onChange={(e) => handlePages(e.target.value)}
               />
-              <span className={styles.sliderUnit}>págs.</span>
+              <span style={S.sliderUnit}>págs.</span>
             </div>
           </div>
 
           {/* Data collected */}
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>¿Tienes datos recopilados?</label>
-            <div className={styles.radioGroup}>
+          <div style={S.field}>
+            <label style={S.fieldLabel}>¿Tienes datos recopilados?</label>
+            <div style={S.radioGroup}>
               {['Sí', 'No', 'Parcialmente'].map((opt) => (
                 <button
                   key={opt}
                   type="button"
-                  className={`${styles.radioBtn} ${hasData === opt ? styles.radioBtnActive : ''}`}
+                  className="scripta-diag-radio"
+                  style={{
+                    ...S.radioBtn,
+                    ...(hasData === opt ? S.radioBtnActive : {}),
+                  }}
                   onClick={() => setHasData(opt)}
                 >
                   {opt}
@@ -513,21 +1152,21 @@ export default function DiagnosticForm() {
           {/* Article/review-specific */}
           {isArticleOrReview && (
             <>
-              <div className={styles.field}>
-                <label className={styles.fieldLabel}>¿Tienes una revista objetivo?</label>
-                <div className={styles.radioGroup}>
-                  <button type="button" className={`${styles.radioBtn} ${hasTargetJournal === 'si' ? styles.radioBtnActive : ''}`} onClick={() => setHasTargetJournal('si')}>Sí</button>
-                  <button type="button" className={`${styles.radioBtn} ${hasTargetJournal === 'no' ? styles.radioBtnActive : ''}`} onClick={() => setHasTargetJournal('no')}>No</button>
+              <div style={S.field}>
+                <label style={S.fieldLabel}>¿Tienes una revista objetivo?</label>
+                <div style={S.radioGroup}>
+                  <button type="button" className="scripta-diag-radio" style={{ ...S.radioBtn, ...(hasTargetJournal === 'si' ? S.radioBtnActive : {}) }} onClick={() => setHasTargetJournal('si')}>Sí</button>
+                  <button type="button" className="scripta-diag-radio" style={{ ...S.radioBtn, ...(hasTargetJournal === 'no' ? S.radioBtnActive : {}) }} onClick={() => setHasTargetJournal('no')}>No</button>
                 </div>
                 {hasTargetJournal === 'si' && (
-                  <input type="text" className={styles.input} placeholder="Nombre de la revista" value={targetJournal} onChange={(e) => setTargetJournal(e.target.value)} />
+                  <input type="text" className="scripta-diag-input" style={S.input} placeholder="Nombre de la revista" value={targetJournal} onChange={(e) => setTargetJournal(e.target.value)} />
                 )}
               </div>
-              <div className={styles.field}>
-                <label className={styles.fieldLabel}>¿Necesitas traducción al inglés?</label>
-                <div className={styles.radioGroup}>
-                  <button type="button" className={`${styles.radioBtn} ${needsTranslation === 'si' ? styles.radioBtnActive : ''}`} onClick={() => setNeedsTranslation('si')}>Sí</button>
-                  <button type="button" className={`${styles.radioBtn} ${needsTranslation === 'no' ? styles.radioBtnActive : ''}`} onClick={() => setNeedsTranslation('no')}>No</button>
+              <div style={S.field}>
+                <label style={S.fieldLabel}>¿Necesitas traducción al inglés?</label>
+                <div style={S.radioGroup}>
+                  <button type="button" className="scripta-diag-radio" style={{ ...S.radioBtn, ...(needsTranslation === 'si' ? S.radioBtnActive : {}) }} onClick={() => setNeedsTranslation('si')}>Sí</button>
+                  <button type="button" className="scripta-diag-radio" style={{ ...S.radioBtn, ...(needsTranslation === 'no' ? S.radioBtnActive : {}) }} onClick={() => setNeedsTranslation('no')}>No</button>
                 </div>
               </div>
             </>
@@ -536,22 +1175,22 @@ export default function DiagnosticForm() {
           {/* Book-specific */}
           {isBook && (
             <>
-              <div className={styles.field}>
-                <label className={styles.fieldLabel}>¿Cuántos capítulos?</label>
-                <div className={styles.sliderRow}>
-                  <input type="range" className={styles.slider} min={3} max={20} value={chapters} onChange={(e) => handleChapters(e.target.value)} />
-                  <input type="number" className={styles.numberInput} min={3} max={20} value={chapters} onChange={(e) => handleChapters(e.target.value)} />
-                  <span className={styles.sliderUnit}>caps.</span>
+              <div style={S.field}>
+                <label style={S.fieldLabel}>¿Cuántos capítulos?</label>
+                <div style={S.sliderRow}>
+                  <input type="range" className="scripta-diag-slider" style={S.slider} min={3} max={20} value={chapters} onChange={(e) => handleChapters(e.target.value)} />
+                  <input type="number" className="scripta-diag-number-input" style={S.numberInput} min={3} max={20} value={chapters} onChange={(e) => handleChapters(e.target.value)} />
+                  <span style={S.sliderUnit}>caps.</span>
                 </div>
               </div>
-              <div className={styles.field}>
-                <label className={styles.fieldLabel}>¿Es para una editorial específica?</label>
-                <div className={styles.radioGroup}>
-                  <button type="button" className={`${styles.radioBtn} ${hasPublisher === 'si' ? styles.radioBtnActive : ''}`} onClick={() => setHasPublisher('si')}>Sí</button>
-                  <button type="button" className={`${styles.radioBtn} ${hasPublisher === 'no' ? styles.radioBtnActive : ''}`} onClick={() => setHasPublisher('no')}>No</button>
+              <div style={S.field}>
+                <label style={S.fieldLabel}>¿Es para una editorial específica?</label>
+                <div style={S.radioGroup}>
+                  <button type="button" className="scripta-diag-radio" style={{ ...S.radioBtn, ...(hasPublisher === 'si' ? S.radioBtnActive : {}) }} onClick={() => setHasPublisher('si')}>Sí</button>
+                  <button type="button" className="scripta-diag-radio" style={{ ...S.radioBtn, ...(hasPublisher === 'no' ? S.radioBtnActive : {}) }} onClick={() => setHasPublisher('no')}>No</button>
                 </div>
                 {hasPublisher === 'si' && (
-                  <input type="text" className={styles.input} placeholder="Nombre de la editorial" value={publisher} onChange={(e) => setPublisher(e.target.value)} />
+                  <input type="text" className="scripta-diag-input" style={S.input} placeholder="Nombre de la editorial" value={publisher} onChange={(e) => setPublisher(e.target.value)} />
                 )}
               </div>
             </>
@@ -560,23 +1199,23 @@ export default function DiagnosticForm() {
           {/* Rejection-specific */}
           {isRejection && (
             <>
-              <div className={styles.field}>
-                <label className={styles.fieldLabel}>¿Tienes los comentarios de los reviewers?</label>
-                <div className={styles.radioGroup}>
-                  <button type="button" className={`${styles.radioBtn} ${hasReviewerComments === 'si' ? styles.radioBtnActive : ''}`} onClick={() => setHasReviewerComments('si')}>Sí</button>
-                  <button type="button" className={`${styles.radioBtn} ${hasReviewerComments === 'no' ? styles.radioBtnActive : ''}`} onClick={() => setHasReviewerComments('no')}>No</button>
+              <div style={S.field}>
+                <label style={S.fieldLabel}>¿Tienes los comentarios de los reviewers?</label>
+                <div style={S.radioGroup}>
+                  <button type="button" className="scripta-diag-radio" style={{ ...S.radioBtn, ...(hasReviewerComments === 'si' ? S.radioBtnActive : {}) }} onClick={() => setHasReviewerComments('si')}>Sí</button>
+                  <button type="button" className="scripta-diag-radio" style={{ ...S.radioBtn, ...(hasReviewerComments === 'no' ? S.radioBtnActive : {}) }} onClick={() => setHasReviewerComments('no')}>No</button>
                 </div>
               </div>
-              <div className={styles.field}>
-                <label className={styles.fieldLabel}>Motivo principal del rechazo</label>
-                <div className={styles.selectWrapper}>
-                  <select className={styles.select} value={rejectionReason} onChange={(e) => setRejectionReason(e.target.value)}>
+              <div style={S.field}>
+                <label style={S.fieldLabel}>Motivo principal del rechazo</label>
+                <div style={S.selectWrapper}>
+                  <select className="scripta-diag-select" style={S.select} value={rejectionReason} onChange={(e) => setRejectionReason(e.target.value)}>
                     <option value="">Selecciona una opción</option>
                     {REJECTION_REASONS.map((r) => (
                       <option key={r} value={r}>{r}</option>
                     ))}
                   </select>
-                  <span className={styles.selectArrow}><IconChevron /></span>
+                  <span style={S.selectArrow}><IconChevron /></span>
                 </div>
               </div>
             </>
@@ -591,64 +1230,86 @@ export default function DiagnosticForm() {
     const emailInvalid = touched.email && !EMAIL_REGEX.test(email);
     const nombreInvalid = touched.nombre && nombre.trim() === '';
     return (
-      <div className={styles.slide}>
-        <h3 className={styles.stepQuestion}>Urgencia y datos de contacto</h3>
-        <div className={styles.formGrid}>
+      <div style={S.slide}>
+        <h3 style={S.stepQuestion}>Urgencia y datos de contacto</h3>
+        <div style={S.formGrid}>
           {/* Urgency */}
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>Nivel de urgencia</label>
-            <div className={styles.urgencyGroup}>
-              {URGENCY.map((u) => (
-                <button
-                  key={u.id}
-                  type="button"
-                  className={`${styles.urgencyPill} ${urgency === u.id ? styles.urgencyPillActive : ''}`}
-                  onClick={() => setUrgency(u.id)}
-                >
-                  <span className={styles.urgencyName}>{u.name}</span>
-                  <span className={styles.urgencyTime}>{u.time}</span>
-                  <span className={styles.urgencyBadge}>{u.label}</span>
-                </button>
-              ))}
+          <div style={S.field}>
+            <label style={S.fieldLabel}>Nivel de urgencia</label>
+            <div className="scripta-diag-urgency-group" style={S.urgencyGroup}>
+              {URGENCY.map((u) => {
+                const isActive = urgency === u.id;
+                return (
+                  <button
+                    key={u.id}
+                    type="button"
+                    className="scripta-diag-pill"
+                    style={{
+                      ...S.urgencyPill,
+                      ...(isActive ? S.urgencyPillActive : {}),
+                    }}
+                    onClick={() => setUrgency(u.id)}
+                  >
+                    <span style={{
+                      ...S.urgencyName,
+                      ...(isActive ? S.urgencyNameActive : {}),
+                    }}>{u.name}</span>
+                    <span style={S.urgencyTime}>{u.time}</span>
+                    <span style={{
+                      ...S.urgencyBadge,
+                      ...(isActive ? S.urgencyBadgeActive : {}),
+                    }}>{u.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          <hr className={styles.divider} />
+          <hr style={S.divider} />
 
           {/* Name */}
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>Nombre completo <span className="req">*</span></label>
+          <div style={S.field}>
+            <label style={S.fieldLabel}>Nombre completo <span style={S.req}>*</span></label>
             <input
               type="text"
-              className={`${styles.input} ${nombreInvalid ? styles.inputError : ''}`}
+              className={`scripta-diag-input${nombreInvalid ? ' scripta-diag-input-error' : ''}`}
+              style={{
+                ...S.input,
+                ...(nombreInvalid ? S.inputError : {}),
+              }}
               placeholder="Tu nombre completo"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
               onBlur={() => setTouched((t) => ({ ...t, nombre: true }))}
             />
-            {nombreInvalid && <span className={styles.errorMsg}>El nombre es requerido</span>}
+            {nombreInvalid && <span style={S.errorMsg}>El nombre es requerido</span>}
           </div>
 
           {/* Email */}
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>Correo electrónico <span className="req">*</span></label>
+          <div style={S.field}>
+            <label style={S.fieldLabel}>Correo electrónico <span style={S.req}>*</span></label>
             <input
               type="email"
-              className={`${styles.input} ${emailInvalid ? styles.inputError : ''}`}
+              className={`scripta-diag-input${emailInvalid ? ' scripta-diag-input-error' : ''}`}
+              style={{
+                ...S.input,
+                ...(emailInvalid ? S.inputError : {}),
+              }}
               placeholder="tu@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onBlur={() => setTouched((t) => ({ ...t, email: true }))}
             />
-            {emailInvalid && <span className={styles.errorMsg}>Ingresa un correo válido</span>}
+            {emailInvalid && <span style={S.errorMsg}>Ingresa un correo válido</span>}
           </div>
 
           {/* WhatsApp */}
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>WhatsApp <span className={styles.fieldHint}>(opcional)</span></label>
+          <div style={S.field}>
+            <label style={S.fieldLabel}>WhatsApp <span style={S.fieldHint}>(opcional)</span></label>
             <input
               type="tel"
-              className={styles.input}
+              className="scripta-diag-input"
+              style={S.input}
               placeholder="+593..."
               value={whatsapp}
               onChange={(e) => setWhatsapp(e.target.value)}
@@ -656,11 +1317,12 @@ export default function DiagnosticForm() {
           </div>
 
           {/* University */}
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>Universidad / institución <span className={styles.fieldHint}>(opcional)</span></label>
+          <div style={S.field}>
+            <label style={S.fieldLabel}>Universidad / institución <span style={S.fieldHint}>(opcional)</span></label>
             <input
               type="text"
-              className={styles.input}
+              className="scripta-diag-input"
+              style={S.input}
               placeholder="Nombre de tu institución"
               value={universidad}
               onChange={(e) => setUniversidad(e.target.value)}
@@ -677,94 +1339,94 @@ export default function DiagnosticForm() {
     const typeLabel = getWorkTypes(stage).find((t) => t.id === workType)?.label || '';
 
     return (
-      <div className={styles.slide}>
-        <div className={styles.resultPanel}>
+      <div style={S.slide}>
+        <div style={S.resultPanel}>
           {/* Summary */}
-          <div className={styles.resultSection}>
-            <h4 className={styles.resultSectionTitle}>Tu proyecto</h4>
-            <div className={styles.summaryGrid}>
-              <div className={styles.summaryItem}>
-                <div className={styles.summaryItemLabel}>Etapa</div>
-                <div className={styles.summaryItemValue}>{stageLabel}</div>
+          <div style={S.resultSection}>
+            <h4 style={S.resultSectionTitle}>Tu proyecto</h4>
+            <div className="scripta-diag-summary-grid" style={S.summaryGrid}>
+              <div style={S.summaryItem}>
+                <div style={S.summaryItemLabel}>Etapa</div>
+                <div style={S.summaryItemValue}>{stageLabel}</div>
               </div>
-              <div className={styles.summaryItem}>
-                <div className={styles.summaryItemLabel}>Tipo</div>
-                <div className={styles.summaryItemValue}>{typeLabel}</div>
+              <div style={S.summaryItem}>
+                <div style={S.summaryItemLabel}>Tipo</div>
+                <div style={S.summaryItemValue}>{typeLabel}</div>
               </div>
-              <div className={styles.summaryItem}>
-                <div className={styles.summaryItemLabel}>Área</div>
-                <div className={styles.summaryItemValue}>{disciplineDisplay || 'No especificada'}</div>
+              <div style={S.summaryItem}>
+                <div style={S.summaryItemLabel}>Área</div>
+                <div style={S.summaryItemValue}>{disciplineDisplay || 'No especificada'}</div>
               </div>
-              <div className={styles.summaryItem}>
-                <div className={styles.summaryItemLabel}>Volumen</div>
-                <div className={styles.summaryItemValue}>{pages} páginas</div>
+              <div style={S.summaryItem}>
+                <div style={S.summaryItemLabel}>Volumen</div>
+                <div style={S.summaryItemValue}>{pages} páginas</div>
               </div>
             </div>
           </div>
 
           {/* Recommendation */}
-          <div className={styles.resultSection}>
-            <h4 className={styles.resultSectionTitle}>Servicio recomendado</h4>
-            <div className={styles.recommendedCard}>
-              <span className={styles.recommendedName}>{serviceName}</span>
-              <span className={styles.recommendedReason}>{recommendation?.reason}</span>
+          <div style={S.resultSection}>
+            <h4 style={S.resultSectionTitle}>Servicio recomendado</h4>
+            <div style={S.recommendedCard}>
+              <span style={S.recommendedName}>{serviceName}</span>
+              <span style={S.recommendedReason}>{recommendation?.reason}</span>
               {recommendation?.note && (
-                <span className={styles.recommendedNote}>{recommendation.note}</span>
+                <span style={S.recommendedNote}>{recommendation.note}</span>
               )}
             </div>
           </div>
 
           {/* Pricing */}
-          <div className={styles.resultSection}>
-            <h4 className={styles.resultSectionTitle}>Inversión estimada</h4>
-            <div className={styles.priceBreakdown}>
-              <div className={styles.priceRow}>
-                <span className={styles.priceLabel}>Subtotal</span>
-                <span className={styles.priceValue}>${formatUSD(pricing.subtotal)}</span>
+          <div style={S.resultSection}>
+            <h4 style={S.resultSectionTitle}>Inversión estimada</h4>
+            <div style={S.priceBreakdown}>
+              <div style={S.priceRow}>
+                <span style={S.priceLabel}>Subtotal</span>
+                <span style={S.priceValue}>${formatUSD(pricing.subtotal)}</span>
               </div>
               {pricing.extra > 0 && (
-                <div className={styles.priceRow}>
-                  <span className={styles.priceLabel}>Páginas adicionales</span>
-                  <span className={styles.priceValue}>+${formatUSD(pricing.extra)}</span>
+                <div style={S.priceRow}>
+                  <span style={S.priceLabel}>Páginas adicionales</span>
+                  <span style={S.priceValue}>+${formatUSD(pricing.extra)}</span>
                 </div>
               )}
               {pricing.translationCost > 0 && (
-                <div className={styles.priceRow}>
-                  <span className={styles.priceLabel}>Traducción ({pages} págs.)</span>
-                  <span className={styles.priceValue}>+${formatUSD(pricing.translationCost)}</span>
+                <div style={S.priceRow}>
+                  <span style={S.priceLabel}>Traducción ({pages} págs.)</span>
+                  <span style={S.priceValue}>+${formatUSD(pricing.translationCost)}</span>
                 </div>
               )}
               {pricing.urgencyAmount > 0 && (
-                <div className={styles.priceRow}>
-                  <span className={styles.priceLabel}>Recargo {urgencyObj.name.toLowerCase()} ({urgencyObj.label})</span>
-                  <span className={styles.priceValue}>+${formatUSD(pricing.urgencyAmount)}</span>
+                <div style={S.priceRow}>
+                  <span style={S.priceLabel}>Recargo {urgencyObj.name.toLowerCase()} ({urgencyObj.label})</span>
+                  <span style={S.priceValue}>+${formatUSD(pricing.urgencyAmount)}</span>
                 </div>
               )}
-              <div className={styles.priceTotal}>
-                <span className={styles.priceTotalLabel}>TOTAL</span>
-                <span className={styles.priceTotalValue}>
-                  <span className={styles.priceTotalCurrency}>USD</span>
+              <div style={S.priceTotal}>
+                <span style={S.priceTotalLabel}>TOTAL</span>
+                <span className="scripta-diag-price-total-value" style={S.priceTotalValue}>
+                  <span style={S.priceTotalCurrency}>USD</span>
                   {formatUSD(pricing.total)}
                 </span>
               </div>
-              <div className={styles.paymentInfo}>
-                <IconShield size={14} />
+              <div style={S.paymentInfo}>
+                <span style={S.paymentInfoIcon}><IconShield size={14} /></span>
                 <span>50% al contratar &middot; 50% al entregar</span>
               </div>
             </div>
           </div>
 
           {/* Actions */}
-          <div className={styles.actions}>
-            <a href={mailtoHref} className={styles.ctaPrimary}>
+          <div style={S.actions}>
+            <a href={mailtoHref} className="scripta-diag-cta" style={S.ctaPrimary}>
               <IconMail size={18} />
               Solicitar este servicio
             </a>
-            <div className={styles.ctaRow}>
-              <a href={emailDiagHref} className={styles.ctaSecondary}>
+            <div className="scripta-diag-cta-row" style={S.ctaRow}>
+              <a href={emailDiagHref} className="scripta-diag-cta-sec" style={S.ctaSecondary}>
                 Enviar diagnóstico a mi email
               </a>
-              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className={styles.ctaWhatsapp}>
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="scripta-diag-cta-wa" style={S.ctaWhatsapp}>
                 <IconWhatsapp size={16} />
                 Quiero hablar primero
               </a>
@@ -779,15 +1441,17 @@ export default function DiagnosticForm() {
   const steps = [renderStep1, renderStep2, renderStep3, renderStep4, renderStep5];
 
   return (
-    <div className={styles.wizard}>
+    <div className="scripta-diag-wizard" style={S.wizard}>
+      <style>{INJECTED_CSS}</style>
+
       {/* Header */}
-      <div className={styles.header}>
-        <div className={styles.headerIcon}>
+      <div className="scripta-diag-header" style={S.header}>
+        <div style={S.headerIcon}>
           <IconClipboard />
         </div>
         <div>
-          <h2 className={styles.headerTitle}>Diagnóstico gratuito de tu proyecto</h2>
-          <p className={styles.headerSubtitle}>Responde 4 preguntas y recibe una recomendación personalizada</p>
+          <h2 className="scripta-diag-header-title" style={S.headerTitle}>Diagnóstico gratuito de tu proyecto</h2>
+          <p style={S.headerSubtitle}>Responde 4 preguntas y recibe una recomendación personalizada</p>
         </div>
       </div>
 
@@ -795,10 +1459,12 @@ export default function DiagnosticForm() {
       {renderProgressBar()}
 
       {/* Body with slide */}
-      <div className={styles.body}>
+      <div className="scripta-diag-body" style={S.body}>
         <div
-          className={styles.slideContainer}
-          style={{ transform: `translateX(-${step * 100}%)` }}
+          style={{
+            ...S.slideContainer,
+            transform: `translateX(-${step * 100}%)`,
+          }}
         >
           {steps.map((renderFn, i) => (
             <React.Fragment key={i}>{renderFn()}</React.Fragment>
@@ -807,16 +1473,20 @@ export default function DiagnosticForm() {
 
         {/* Nav */}
         {step < 4 && (
-          <div className={styles.nav}>
+          <div style={S.nav}>
             {step > 0 ? (
-              <button type="button" className={styles.btnBack} onClick={goBack}>
+              <button type="button" className="scripta-diag-btn-back" style={S.btnBack} onClick={goBack}>
                 <IconArrowLeft size={14} />
                 Anterior
               </button>
             ) : <span />}
             <button
               type="button"
-              className={styles.btnNext}
+              className="scripta-diag-btn-next"
+              style={{
+                ...S.btnNext,
+                ...(!canProceed(step) ? S.btnNextDisabled : {}),
+              }}
               disabled={!canProceed(step)}
               onClick={goNext}
             >
@@ -827,8 +1497,8 @@ export default function DiagnosticForm() {
         )}
 
         {step === 4 && (
-          <div className={styles.nav}>
-            <button type="button" className={styles.btnBack} onClick={goBack}>
+          <div style={S.nav}>
+            <button type="button" className="scripta-diag-btn-back" style={S.btnBack} onClick={goBack}>
               <IconArrowLeft size={14} />
               Modificar respuestas
             </button>
