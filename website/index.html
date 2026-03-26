@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCRIPTA ACADEMIC — Servicios Editoriales y de Investigación Académica</title>
+  <meta name="description" content="Producción editorial académica de alto nivel. Libros, artículos científicos, tesis y maquetación profesional. Estándares internacionales. Afiliados a Horizon Nexus Journal (ISSN 3073-1275).">
+  <meta name="keywords" content="producción editorial académica, libros académicos, artículos científicos, tesis, maquetación LaTeX, consultoría académica">
+  <meta name="author" content="SCRIPTA ACADEMIC">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SCRIPTA ACADEMIC — Servicios Editoriales y de Investigación Académica">
+  <meta property="og:description" content="Producción editorial académica de alto nivel. Libros, artículos científicos, tesis y maquetación profesional. Afiliados a Horizon Nexus Journal.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scriptaacademic.com">
+  <meta property="og:locale" content="es_ES">
+  <!-- <meta property="og:image" content="https://scriptaacademic.com/og-image.jpg"> -->
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>S</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       NAVBAR
+       ================================================================ -->
+  <nav class="navbar" id="navbar" aria-label="Navegación principal">
+    <div class="navbar__container">
+      <a href="#hero" class="navbar__logo" aria-label="SCRIPTA ACADEMIC — Inicio">
+        <span class="navbar__logo-bold">SCRIPTA</span>
+        <span class="navbar__logo-light">ACADEMIC</span>
+      </a>
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="navbar__toggle-line"></span>
+        <span class="navbar__toggle-line"></span>
+        <span class="navbar__toggle-line"></span>
+      </button>
+      <div class="navbar__menu" id="navMenu">
+        <a href="#servicios" class="navbar__link">Servicios</a>
+        <a href="#nosotros" class="navbar__link">Sobre Nosotros</a>
+        <a href="#portafolio" class="navbar__link">Portafolio</a>
+        <a href="#contacto" class="navbar__link">Contacto</a>
+        <span class="navbar__badge">Journal ISSN 3073-1275</span>
+        <a href="#contacto" class="navbar__cta">Cotización Gratuita</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       HERO SECTION
+       ================================================================ -->
+  <section class="hero" id="hero">
+    <div class="hero__pattern"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span class="hero__title-line reveal-fade">Convertimos tu investigación</span>
+        <span class="hero__title-line hero__title-accent reveal-fade reveal-delay-1">en publicación.</span>
+      </h1>
+      <p class="hero__subtitle reveal-fade reveal-delay-2">
+        Producimos libros académicos, artículos científicos y tesis con estándares internacionales. Desde la idea hasta la publicación indexada.
+      </p>
+      <div class="hero__actions reveal-fade reveal-delay-3">
+        <a href="#contacto" class="btn btn--primary btn--lg">Solicita tu cotización gratuita</a>
+        <a href="#servicios" class="hero__scroll-link">Ver servicios <span class="hero__arrow">↓</span></a>
+      </div>
+    </div>
+    <div class="hero__scroll-indicator" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       BARRA DE CREDENCIALES
+       ================================================================ -->
+  <section class="credentials" aria-label="Credenciales">
+    <div class="credentials__container">
+      <div class="credentials__item">
+        <i data-lucide="graduation-cap" class="credentials__icon"></i>
+        <span>Formación Doctoral Europea</span>
+      </div>
+      <div class="credentials__divider" aria-hidden="true"></div>
+      <div class="credentials__item">
+        <i data-lucide="book-open" class="credentials__icon"></i>
+        <span>Docentes Universitarios Activos</span>
+      </div>
+      <div class="credentials__divider" aria-hidden="true"></div>
+      <div class="credentials__item">
+        <i data-lucide="file-text" class="credentials__icon"></i>
+        <span>Publicaciones Indexadas con DOI</span>
+      </div>
+      <div class="credentials__divider" aria-hidden="true"></div>
+      <div class="credentials__item">
+        <i data-lucide="bookmark" class="credentials__icon"></i>
+        <span>Libros con ISBN Internacional</span>
+      </div>
+      <div class="credentials__divider" aria-hidden="true"></div>
+      <div class="credentials__item">
+        <i data-lucide="newspaper" class="credentials__icon"></i>
+        <span>Horizon Nexus Journal · ISSN 3073-1275</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SERVICIOS
+       ================================================================ -->
+  <section class="services section section--light" id="servicios">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title">Nuestros Servicios</h2>
+        <p class="section__subtitle">Producción editorial académica de alto nivel</p>
+      </div>
+      <div class="services__grid">
+
+        <article class="service-card reveal-up">
+          <div class="service-card__icon"><i data-lucide="book-open"></i></div>
+          <h3 class="service-card__title">Libros Académicos</h3>
+          <p class="service-card__desc">Producción integral de libros universitarios y científicos. Maquetación profesional, gestión bibliográfica completa.</p>
+          <span class="service-card__price">Desde $800</span>
+        </article>
+
+        <article class="service-card reveal-up">
+          <div class="service-card__icon"><i data-lucide="file-text"></i></div>
+          <h3 class="service-card__title">Artículos Científicos</h3>
+          <p class="service-card__desc">Manuscritos IMRyD listos para revistas indexadas. Incluye análisis estadístico y cover letter.</p>
+          <span class="service-card__price">Desde $300</span>
+        </article>
+
+        <article class="service-card reveal-up">
+          <div class="service-card__icon"><i data-lucide="graduation-cap"></i></div>
+          <h3 class="service-card__title">Tesis de Grado</h3>
+          <p class="service-card__desc">Pregrado, maestría y doctorado. Del marco teórico a la defensa. Tu tesis, terminada y defendible.</p>
+          <span class="service-card__price">Desde $400</span>
+        </article>
+
+        <article class="service-card reveal-up">
+          <div class="service-card__icon"><i data-lucide="award"></i></div>
+          <h3 class="service-card__title">Tesis Doctoral</h3>
+          <p class="service-card__desc">Servicio premium. Asesoría metodológica integral, redacción completa, artículos derivados.</p>
+          <span class="service-card__price">Desde $1,500</span>
+        </article>
+
+        <article class="service-card reveal-up">
+          <div class="service-card__icon"><i data-lucide="layout"></i></div>
+          <h3 class="service-card__title">Maquetación LaTeX</h3>
+          <p class="service-card__desc">Formato profesional para libros y artículos. Figuras de alta calidad, bibliografía automatizada.</p>
+          <span class="service-card__price">Desde $100</span>
+        </article>
+
+        <article class="service-card reveal-up">
+          <div class="service-card__icon"><i data-lucide="search"></i></div>
+          <h3 class="service-card__title">Revisión Sistemática</h3>
+          <p class="service-card__desc">Protocolo PRISMA, búsqueda en bases de datos, meta-análisis cuantitativo.</p>
+          <span class="service-card__price">Desde $500</span>
+        </article>
+
+        <article class="service-card reveal-up">
+          <div class="service-card__icon"><i data-lucide="bar-chart-2"></i></div>
+          <h3 class="service-card__title">Diseño Experimental</h3>
+          <p class="service-card__desc">Diseño del estudio, análisis en R/Python, tablas e interpretación de resultados.</p>
+          <span class="service-card__price">Desde $200</span>
+        </article>
+
+        <article class="service-card reveal-up">
+          <div class="service-card__icon"><i data-lucide="book-marked"></i></div>
+          <h3 class="service-card__title">Capítulos de Libro</h3>
+          <p class="service-card__desc">Capítulos individuales para obras colectivas. Formato según perfil editorial del compilador.</p>
+          <span class="service-card__price">Desde $150</span>
+        </article>
+
+        <article class="service-card reveal-up">
+          <div class="service-card__icon"><i data-lucide="package"></i></div>
+          <h3 class="service-card__title">Paquetes Especiales</h3>
+          <p class="service-card__desc">Libro + artículos derivados. Tesis + artículo. Descuentos por departamento. Consulta.</p>
+          <span class="service-card__price">Personalizado</span>
+        </article>
+
+      </div>
+      <div class="services__cta reveal-up">
+        <p>¿Necesitas algo diferente? <a href="https://wa.me/XXXXXXXXXXX" class="link--teal" target="_blank" rel="noopener">Hablemos.</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       POR QUÉ ELEGIRNOS
+       ================================================================ -->
+  <section class="why section section--dark" id="por-que">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title section__title--light">¿Por qué SCRIPTA ACADEMIC?</h2>
+      </div>
+      <div class="why__grid">
+        <div class="why__item reveal-up">
+          <div class="why__icon"><i data-lucide="shield-check"></i></div>
+          <h3 class="why__title">Experticia Real</h3>
+          <p class="why__desc">Nuestro equipo está formado por investigadores activos con publicaciones indexadas, ISBN y DOI verificables. No somos ghostwriters genéricos.</p>
+        </div>
+        <div class="why__item reveal-up">
+          <div class="why__icon"><i data-lucide="globe"></i></div>
+          <h3 class="why__title">Estándares Internacionales</h3>
+          <p class="why__desc">APA 7, Vancouver, biblatex, y los formatos que cada revista o editorial exige. Sin improvisaciones. Sin errores de formato.</p>
+        </div>
+        <div class="why__item reveal-up">
+          <div class="why__icon"><i data-lucide="lock"></i></div>
+          <h3 class="why__title">Confidencialidad Absoluta</h3>
+          <p class="why__desc">Contrato de servicios, cláusula de confidencialidad, y entrega total de derechos de autor. Tu investigación está protegida.</p>
+        </div>
+        <div class="why__item reveal-up">
+          <div class="why__icon"><i data-lucide="newspaper"></i></div>
+          <h3 class="why__title">Canal de Publicación Propio</h3>
+          <p class="why__desc">Contamos con acceso directo a Horizon Nexus Journal (ISSN 3073-1275), una revista académica internacional arbitrada por pares. Tu artículo puede ser publicado sin intermediarios.</p>
+        </div>
+      </div>
+
+      <!-- Counters -->
+      <div class="stats reveal-up" id="statsSection">
+        <div class="stats__item">
+          <span class="stats__number" data-target="50">0</span><span class="stats__plus">+</span>
+          <span class="stats__label">Proyectos Completados</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="10">0</span><span class="stats__plus">+</span>
+          <span class="stats__label">Publicaciones con DOI</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="5">0</span><span class="stats__plus">+</span>
+          <span class="stats__label">Libros en Producción</span>
+        </div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="3">0</span>
+          <span class="stats__label">Países Atendidos</span>
+        </div>
+      </div>
+
+      <div class="why__divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SOBRE NOSOTROS
+       ================================================================ -->
+  <section class="about section section--light" id="nosotros">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__text reveal-up">
+          <h2 class="section__title">Equipo Editorial de Alto Nivel</h2>
+          <p class="about__paragraph">
+            SCRIPTA ACADEMIC está respaldada por un Comité Editorial conformado por académicos e investigadores provenientes de universidades de renombre internacional, con trayectorias doctorales, múltiples maestrías y una producción científica verificable a nivel regional y global.
+          </p>
+          <p class="about__paragraph">
+            Nuestro equipo combina formación doctoral europea, experiencia docente universitaria latinoamericana, y un historial de publicaciones con ISBN y DOI que garantiza que cada manuscrito que producimos cumple con los más exigentes estándares editoriales del mundo académico.
+          </p>
+          <p class="about__paragraph">
+            Además, SCRIPTA ACADEMIC forma parte del ecosistema editorial de Horizon Nexus Journal (ISSN 3073-1275), lo que nos permite ofrecer un canal directo de publicación para artículos de alto impacto.
+          </p>
+          <ul class="about__credentials">
+            <li><i data-lucide="check" class="about__check"></i>Formación doctoral en universidades europeas de prestigio</li>
+            <li><i data-lucide="check" class="about__check"></i>Múltiples maestrías y especializaciones en investigación</li>
+            <li><i data-lucide="check" class="about__check"></i>Profesores y ponentes en universidades de Ecuador y España</li>
+            <li><i data-lucide="check" class="about__check"></i>Libros académicos publicados con ISBN internacional</li>
+            <li><i data-lucide="check" class="about__check"></i>Artículos científicos indexados con DOI (2019–2026)</li>
+            <li><i data-lucide="check" class="about__check"></i>Revisores de idiomas certificados (español e inglés)</li>
+            <li><i data-lucide="check" class="about__check"></i>Afiliados a Horizon Nexus Journal (ISSN 3073-1275)</li>
+          </ul>
+        </div>
+        <div class="about__photo reveal-up">
+          <div class="about__photo-placeholder about__team-block">
+            <i data-lucide="users" class="about__photo-icon"></i>
+            <span class="about__team-title">Comité Editorial Internacional</span>
+            <span class="about__team-subtitle">Investigadores · Docentes · Revisores</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PORTAFOLIO
+       ================================================================ -->
+  <section class="portfolio section section--dark" id="portafolio">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title section__title--light">Trabajos Publicados</h2>
+        <p class="section__subtitle section__subtitle--light">Cada uno producido con los mismos estándares que aplicamos a tu proyecto.</p>
+      </div>
+      <div class="portfolio__grid">
+
+        <article class="portfolio-card reveal-up">
+          <div class="portfolio-card__cover">
+            <i data-lucide="book-open" class="portfolio-card__cover-icon"></i>
+          </div>
+          <div class="portfolio-card__info">
+            <h3 class="portfolio-card__title">Fisiología Animal I</h3>
+            <span class="portfolio-card__year">2025</span>
+            <p class="portfolio-card__detail">ISBN: 10.48190/9789942530691</p>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal-up">
+          <div class="portfolio-card__cover">
+            <i data-lucide="book-open" class="portfolio-card__cover-icon"></i>
+          </div>
+          <div class="portfolio-card__info">
+            <h3 class="portfolio-card__title">Deontología y Legislación Veterinaria</h3>
+            <span class="portfolio-card__year">En producción</span>
+            <p class="portfolio-card__detail">5 capítulos</p>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal-up">
+          <div class="portfolio-card__cover">
+            <i data-lucide="book-open" class="portfolio-card__cover-icon"></i>
+          </div>
+          <div class="portfolio-card__info">
+            <h3 class="portfolio-card__title">Fisiopatología de los Sistemas Orgánicos</h3>
+            <span class="portfolio-card__year">En producción</span>
+            <p class="portfolio-card__detail">14 capítulos</p>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal-up">
+          <div class="portfolio-card__cover">
+            <i data-lucide="book-open" class="portfolio-card__cover-icon"></i>
+          </div>
+          <div class="portfolio-card__info">
+            <h3 class="portfolio-card__title">Diseño Experimental en Medicina Veterinaria</h3>
+            <span class="portfolio-card__year">En producción</span>
+            <p class="portfolio-card__detail">Libro completo</p>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal-up">
+          <div class="portfolio-card__cover">
+            <i data-lucide="file-text" class="portfolio-card__cover-icon"></i>
+          </div>
+          <div class="portfolio-card__info">
+            <h3 class="portfolio-card__title">Artículos Científicos</h3>
+            <span class="portfolio-card__year">2019–2026</span>
+            <p class="portfolio-card__detail">Múltiples publicaciones indexadas con DOI</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TESTIMONIALES
+       ================================================================ -->
+  <section class="testimonials section section--light" id="testimoniales">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title">Lo que dicen nuestros colaboradores</h2>
+      </div>
+      <div class="testimonials__grid">
+
+        <blockquote class="testimonial reveal-up">
+          <div class="testimonial__quote" aria-hidden="true">"</div>
+          <p class="testimonial__text">Testimonio pendiente.</p>
+          <footer class="testimonial__author">
+            <span class="testimonial__name">Dr. J. B. Mina Ortiz</span>
+            <span class="testimonial__affiliation">Investigador, UNESUM — Ecuador</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial reveal-up">
+          <div class="testimonial__quote" aria-hidden="true">"</div>
+          <p class="testimonial__text">Testimonio pendiente.</p>
+          <footer class="testimonial__author">
+            <span class="testimonial__name">Dr. R. Herrera-Feijoo</span>
+            <span class="testimonial__affiliation">Investigador, UTEQ — Ecuador</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial reveal-up">
+          <div class="testimonial__quote" aria-hidden="true">"</div>
+          <p class="testimonial__text">Testimonio pendiente.</p>
+          <footer class="testimonial__author">
+            <span class="testimonial__name">Dra. L. Jara Zea</span>
+            <span class="testimonial__affiliation">Investigadora y Docente</span>
+          </footer>
+        </blockquote>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PROCESO DE TRABAJO
+       ================================================================ -->
+  <section class="process section section--dark" id="proceso">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title section__title--light">Cómo trabajamos</h2>
+      </div>
+      <div class="process__timeline">
+
+        <div class="process__step reveal-up">
+          <div class="process__number" aria-hidden="true">01</div>
+          <div class="process__connector" aria-hidden="true"></div>
+          <h3 class="process__title">Consulta Gratuita</h3>
+          <p class="process__desc">Cuéntanos tu proyecto por WhatsApp o email. Sin compromiso.</p>
+        </div>
+
+        <div class="process__step reveal-up">
+          <div class="process__number" aria-hidden="true">02</div>
+          <div class="process__connector" aria-hidden="true"></div>
+          <h3 class="process__title">Cotización en 24h</h3>
+          <p class="process__desc">Recibe una propuesta detallada con alcance, precio y plazo.</p>
+        </div>
+
+        <div class="process__step reveal-up">
+          <div class="process__number" aria-hidden="true">03</div>
+          <div class="process__connector" aria-hidden="true"></div>
+          <h3 class="process__title">Anticipo + Brief</h3>
+          <p class="process__desc">Firmamos contrato, recibes el brief, y comenzamos.</p>
+        </div>
+
+        <div class="process__step reveal-up">
+          <div class="process__number" aria-hidden="true">04</div>
+          <div class="process__connector" aria-hidden="true"></div>
+          <h3 class="process__title">Producción</h3>
+          <p class="process__desc">Redactamos tu manuscrito con los más altos estándares.</p>
+        </div>
+
+        <div class="process__step reveal-up">
+          <div class="process__number" aria-hidden="true">05</div>
+          <div class="process__connector" aria-hidden="true"></div>
+          <h3 class="process__title">Revisión</h3>
+          <p class="process__desc">Recibes el borrador. 2 rondas de ajustes incluidas.</p>
+        </div>
+
+        <div class="process__step reveal-up">
+          <div class="process__number" aria-hidden="true">06</div>
+          <div class="process__connector" aria-hidden="true"></div>
+          <h3 class="process__title">Entrega Final</h3>
+          <p class="process__desc">Manuscrito listo para publicar. Los derechos son 100% tuyos.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CTA FINAL
+       ================================================================ -->
+  <section class="cta-final section" id="contacto">
+    <div class="container cta-final__container">
+      <h2 class="cta-final__title reveal-fade">¿Listo para publicar?</h2>
+      <p class="cta-final__subtitle reveal-fade reveal-delay-1">La consulta es gratuita. Cotización en menos de 24 horas.</p>
+      <div class="cta-final__actions reveal-fade reveal-delay-2">
+        <a href="https://wa.me/XXXXXXXXXXX" class="btn btn--white btn--lg" target="_blank" rel="noopener">Contactar por WhatsApp</a>
+        <a href="mailto:info@scriptaacademic.com" class="btn btn--outline-white btn--lg">Enviar email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#hero" class="footer__logo">
+            <span class="navbar__logo-bold">SCRIPTA</span>
+            <span class="navbar__logo-light">ACADEMIC</span>
+          </a>
+          <p class="footer__tagline">Investigación que trasciende. Publicación que perdura.</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Servicios</h4>
+          <ul class="footer__list">
+            <li><a href="#servicios">Libros Académicos</a></li>
+            <li><a href="#servicios">Artículos Científicos</a></li>
+            <li><a href="#servicios">Tesis de Grado</a></li>
+            <li><a href="#servicios">Maquetación LaTeX</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Contacto</h4>
+          <ul class="footer__list">
+            <li><a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:info@scriptaacademic.com">info@scriptaacademic.com</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Medios de Pago</h4>
+          <p class="footer__payment">Transferencia · Datafast · PayPhone · PayPal</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Publicación Afiliada</h4>
+          <p class="footer__journal">Horizon Nexus Journal</p>
+          <p class="footer__journal-issn">ISSN 3073-1275</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 SCRIPTA ACADEMIC. Todos los derechos reservados.</p>
+        <p>Ecuador | Servicio global en español</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts.js"></script>
+</body>
+</html>

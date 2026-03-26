@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCRIPTA ACADEMIC — Logo System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #fafbfc;
+      color: #2c3e50;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1B2A4A 0%, #0D5a5f 100%);
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .header h1 { font-size: 28px; font-weight: 600; letter-spacing: 3px; }
+    .header p { font-size: 14px; opacity: 0.7; margin-top: 8px; }
+
+    .section {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 40px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1B2A4A;
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #0D7377;
+      display: inline-block;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .card {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .card-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 30px;
+      min-height: 200px;
+    }
+    .card-display.light { background: #ffffff; }
+    .card-display.dark { background: #1B2A4A; }
+
+    .card-display svg { max-width: 100%; height: auto; }
+
+    .card-footer {
+      padding: 12px 16px;
+      background: #f5f5f5;
+      font-size: 11px;
+      color: #888;
+      border-top: 1px solid #eee;
+    }
+
+    .palette {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .swatch-color {
+      width: 140px;
+      height: 80px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
+    .swatch-hex { font-family: monospace; font-size: 13px; color: #1B2A4A; }
+    .swatch-name { font-size: 11px; color: #999; }
+
+    .footer {
+      text-align: center;
+      padding: 50px;
+      color: #bbb;
+      font-size: 11px;
+      border-top: 1px solid #eee;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>SCRIPTA ACADEMIC</h1>
+    <p>Professional Logo System &mdash; Brand Assets</p>
+  </div>
+
+  <!-- ==================== STACKED ==================== -->
+  <div class="section">
+    <div class="section-title">Logo Principal (Stacked)</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-display light">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="360">
+            <text x="240" y="68" text-anchor="middle"
+                  font-family="'Playfair Display',Georgia,serif"
+                  font-size="60" font-weight="700" fill="#1B2A4A"
+                  letter-spacing="8">SCRIPTA</text>
+            <line x1="128" y1="88" x2="352" y2="88"
+                  stroke="#0D7377" stroke-width="0.8" stroke-linecap="round"/>
+            <text x="243" y="120" text-anchor="middle"
+                  font-family="'Crimson Text',Georgia,serif"
+                  font-size="20" font-weight="400" fill="#0D7377"
+                  letter-spacing="8">ACADEMIC</text>
+          </svg>
+        </div>
+        <div class="card-footer">Fondo claro &mdash; uso principal</div>
+      </div>
+
+      <div class="card">
+        <div class="card-display dark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="360">
+            <text x="240" y="68" text-anchor="middle"
+                  font-family="'Playfair Display',Georgia,serif"
+                  font-size="60" font-weight="700" fill="#FFFFFF"
+                  letter-spacing="8">SCRIPTA</text>
+            <line x1="128" y1="88" x2="352" y2="88"
+                  stroke="#0D7377" stroke-width="0.8" stroke-linecap="round"/>
+            <text x="243" y="120" text-anchor="middle"
+                  font-family="'Crimson Text',Georgia,serif"
+                  font-size="20" font-weight="400" fill="#0D7377"
+                  letter-spacing="8">ACADEMIC</text>
+          </svg>
+        </div>
+        <div class="card-footer">Fondo oscuro &mdash; variante inversa</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== HORIZONTAL ==================== -->
+  <div class="section">
+    <div class="section-title">Logo Horizontal</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-display light">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 60" width="420">
+            <text x="10" y="42" font-family="'Playfair Display',Georgia,serif"
+                  font-size="40" font-weight="700" fill="#1B2A4A"
+                  letter-spacing="4">SCRIPTA</text>
+            <line x1="300" y1="12" x2="300" y2="50"
+                  stroke="#0D7377" stroke-width="0.7" stroke-linecap="round"/>
+            <text x="320" y="40" font-family="'Crimson Text',Georgia,serif"
+                  font-size="18" font-weight="400" fill="#0D7377"
+                  letter-spacing="5">ACADEMIC</text>
+          </svg>
+        </div>
+        <div class="card-footer">Headers, navegaci&oacute;n, email</div>
+      </div>
+
+      <div class="card">
+        <div class="card-display dark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 60" width="420">
+            <text x="10" y="42" font-family="'Playfair Display',Georgia,serif"
+                  font-size="40" font-weight="700" fill="#FFFFFF"
+                  letter-spacing="4">SCRIPTA</text>
+            <line x1="300" y1="12" x2="300" y2="50"
+                  stroke="#0D7377" stroke-width="0.7" stroke-linecap="round"/>
+            <text x="320" y="40" font-family="'Crimson Text',Georgia,serif"
+                  font-size="18" font-weight="400" fill="#0D7377"
+                  letter-spacing="5">ACADEMIC</text>
+          </svg>
+        </div>
+        <div class="card-footer">Footer oscuro, overlays</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== ICON ==================== -->
+  <div class="section">
+    <div class="section-title">Icono / Favicon</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-display light">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100">
+            <text x="60" y="82" text-anchor="middle"
+                  font-family="'Playfair Display',Georgia,serif"
+                  font-size="80" font-weight="700" fill="#1B2A4A">S</text>
+            <line x1="30" y1="95" x2="90" y2="95"
+                  stroke="#0D7377" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="card-footer">Favicon, WhatsApp, avatar</div>
+      </div>
+
+      <div class="card">
+        <div class="card-display dark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100">
+            <text x="60" y="82" text-anchor="middle"
+                  font-family="'Playfair Display',Georgia,serif"
+                  font-size="80" font-weight="700" fill="#FFFFFF">S</text>
+            <line x1="30" y1="95" x2="90" y2="95"
+                  stroke="#0D7377" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="card-footer">Dark mode, fondos oscuros</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== PALETTE ==================== -->
+  <div class="section">
+    <div class="section-title">Paleta</div>
+    <div class="palette">
+      <div>
+        <div class="swatch-color" style="background:#1B2A4A;"></div>
+        <div class="swatch-hex">#1B2A4A</div>
+        <div class="swatch-name">Navy &mdash; Primary</div>
+      </div>
+      <div>
+        <div class="swatch-color" style="background:#0D7377;"></div>
+        <div class="swatch-hex">#0D7377</div>
+        <div class="swatch-name">Teal &mdash; Accent</div>
+      </div>
+      <div>
+        <div class="swatch-color" style="background:#FFFFFF; border:1px solid #ddd;"></div>
+        <div class="swatch-hex">#FFFFFF</div>
+        <div class="swatch-name">White &mdash; Background</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    SCRIPTA ACADEMIC &mdash; Logo System<br>
+    Playfair Display + Crimson Text &bull; Navy + Teal + White
+  </div>
+
+</body>
+</html>

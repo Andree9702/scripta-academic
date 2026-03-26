@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="480" height="160">
+  <text x="240" y="68" text-anchor="middle"
+        font-family="'Playfair Display',Georgia,serif"
+        font-size="60" font-weight="700" fill="#FFFFFF"
+        letter-spacing="8">SCRIPTA</text>
+
+  <line x1="128" y1="88" x2="352" y2="88"
+        stroke="#0D7377" stroke-width="0.8" stroke-linecap="round"/>
+
+  <text x="243" y="120" text-anchor="middle"
+        font-family="'Crimson Text',Georgia,serif"
+        font-size="20" font-weight="400" fill="#0D7377"
+        letter-spacing="8">ACADEMIC</text>
+</svg>

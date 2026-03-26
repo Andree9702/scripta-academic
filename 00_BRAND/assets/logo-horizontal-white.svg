@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 60" width="560" height="60">
+  <text x="10" y="42" font-family="'Playfair Display',Georgia,serif"
+        font-size="40" font-weight="700" fill="#FFFFFF"
+        letter-spacing="4">SCRIPTA</text>
+
+  <line x1="300" y1="12" x2="300" y2="50"
+        stroke="#0D7377" stroke-width="0.7" stroke-linecap="round"/>
+
+  <text x="320" y="40" font-family="'Crimson Text',Georgia,serif"
+        font-size="18" font-weight="400" fill="#0D7377"
+        letter-spacing="5">ACADEMIC</text>
+</svg>
