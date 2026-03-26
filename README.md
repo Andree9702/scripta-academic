@@ -6,11 +6,30 @@
 
 ## Qué es este proyecto
 
-Infraestructura de negocio para SCRIPTA ACADEMIC, consultora especializada en
+Infraestructura de negocio y sitio web para SCRIPTA ACADEMIC, consultora especializada en
 producción de libros académicos, artículos científicos, tesis y maquetación
 profesional para el mercado hispanohablante.
 
-## Estructura
+## Sitio web
+
+HTML/CSS/JS puro, sin frameworks ni dependencias de build. Desplegado con GitHub Pages.
+
+- `index.html` — Página principal (HTML5 semántico, todas las secciones)
+- `styles.css` — Estilos completos, responsive, animaciones
+- `scripts.js` — Navbar, scroll reveal, parallax, mobile menu
+- `CNAME` — Dominio personalizado (scriptaacademic.com)
+
+Dependencias externas (CDN): Google Fonts (Cormorant Garamond + Inter), Lucide Icons.
+
+### Personalización pendiente
+
+- [ ] Reemplazar `XXXXXXXXXXX` en links de WhatsApp con el número real
+- [ ] Agregar foto profesional en sección "Sobre Nosotros"
+- [ ] Agregar textos reales en testimoniales
+- [ ] Agregar imagen OG para compartir en redes sociales
+- [ ] Agregar favicon personalizado
+
+## Documentación interna
 
 - `00_BRAND/` — Identidad visual, guía de marca, assets
 - `01_LEGAL/` — RUC, contratos, términos legales
@@ -25,6 +44,6 @@ profesional para el mercado hispanohablante.
 ## Datos clave
 
 - **Fundador:** Ronald Andreé Vitonera Rogel
-- **Dominio:** scriptaacademic.com (pendiente registro)
+- **Dominio:** scriptaacademic.com
 - **Modelo:** Persona natural con RUC, Ecuador
 - **Inicio:** Marzo 2026
