@@ -49,8 +49,9 @@
       </button>
       <div class="navbar__menu" id="navMenu">
         <a href="#servicios" class="navbar__link">Servicios</a>
-        <a href="#nosotros" class="navbar__link">Sobre Nosotros</a>
-        <a href="#portafolio" class="navbar__link">Portafolio</a>
+        <a href="#muestra" class="navbar__link">Demo</a>
+        <a href="#precios" class="navbar__link">Precios</a>
+        <a href="#nosotros" class="navbar__link">Nosotros</a>
         <a href="#contacto" class="navbar__link">Contacto</a>
         <span class="navbar__badge">Journal ISSN 3073-1275</span>
         <a href="#contacto" class="navbar__cta">Cotización Gratuita</a>
@@ -189,8 +190,17 @@
 
       </div>
       <div class="services__cta reveal-up">
-        <p>¿Necesitas algo diferente? <a href="https://wa.me/XXXXXXXXXXX" class="link--teal" target="_blank" rel="noopener">Hablemos.</a></p>
+        <p>¿Necesitas algo diferente? <a href="https://wa.me/593991520523" class="link--teal" target="_blank" rel="noopener">Hablemos.</a></p>
       </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       MUESTRA GRATUITA (React component)
+       ================================================================ -->
+  <section class="section section--light" id="muestra" style="padding-top:3rem;padding-bottom:3rem;">
+    <div class="container" style="max-width:650px;">
+      <div id="scripta-sample"></div>
     </div>
   </section>
 
@@ -455,14 +465,32 @@
   </section>
 
   <!-- ================================================================
+       CALCULADORA DE PRECIOS (React component)
+       ================================================================ -->
+  <section class="section section--light" id="precios" style="padding-top:3rem;padding-bottom:3rem;">
+    <div class="container" style="max-width:600px;">
+      <div id="scripta-calculator"></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       DIAGNÓSTICO INTELIGENTE (React component)
+       ================================================================ -->
+  <section class="section section--dark" id="contacto" style="padding-top:3rem;padding-bottom:3rem;">
+    <div class="container" style="max-width:650px;">
+      <div id="scripta-diagnostic"></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
        CTA FINAL
        ================================================================ -->
-  <section class="cta-final section" id="contacto">
+  <section class="cta-final section">
     <div class="container cta-final__container">
       <h2 class="cta-final__title reveal-fade">¿Listo para publicar?</h2>
       <p class="cta-final__subtitle reveal-fade reveal-delay-1">La consulta es gratuita. Cotización en menos de 24 horas.</p>
       <div class="cta-final__actions reveal-fade reveal-delay-2">
-        <a href="https://wa.me/XXXXXXXXXXX" class="btn btn--white btn--lg" target="_blank" rel="noopener">Contactar por WhatsApp</a>
+        <a href="https://wa.me/593991520523" class="btn btn--white btn--lg" target="_blank" rel="noopener">Contactar por WhatsApp</a>
         <a href="mailto:info@scriptaacademic.com" class="btn btn--outline-white btn--lg">Enviar email</a>
       </div>
     </div>
@@ -493,7 +521,7 @@
         <div class="footer__col">
           <h4 class="footer__heading">Contacto</h4>
           <ul class="footer__list">
-            <li><a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="https://wa.me/593991520523" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a href="mailto:info@scriptaacademic.com">info@scriptaacademic.com</a></li>
           </ul>
         </div>
@@ -516,5 +544,10 @@
 
   <!-- Scripts -->
   <script src="scripts.js"></script>
+
+  <!-- React Components (Vite bundles) -->
+  <script type="module" src="dist/sample.js"></script>
+  <script type="module" src="dist/calculator.js"></script>
+  <script type="module" src="dist/diagnostic.js"></script>
 </body>
 </html>
