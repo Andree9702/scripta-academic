@@ -3,7 +3,7 @@ import styles from './SampleGenerator.module.css';
 
 // ─── Config ────────────────────────────────────────────────────────────────────
 
-const API_URL = 'https://scripta-api.vercel.app/api/generate-sample';
+const API_URL = 'https://scripta-api1.vercel.app/api/generate-sample';
 // During development, change to: 'http://localhost:3000/api/generate-sample'
 
 const MAX_SAMPLES_PER_SESSION = 3;
