@@ -1,0 +1,489 @@
+/* PriceCalculator.module.css — Scripta Academic */
+
+.calculator {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(26, 35, 50, 0.10), 0 1px 4px rgba(26, 35, 50, 0.06);
+  overflow: hidden;
+  color: #1f2937;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #1a2332 0%, #243044 100%);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headerIcon {
+  width: 40px;
+  height: 40px;
+  background: rgba(13, 148, 136, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.headerIcon svg {
+  width: 22px;
+  height: 22px;
+  color: #0d9488;
+}
+
+.headerTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.headerSubtitle {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 2px 0 0;
+}
+
+/* Body */
+.body {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+}
+
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0d9488;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* Select dropdown */
+.selectWrapper {
+  position: relative;
+}
+
+.select {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: #1f2937;
+  background: #fff;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.select:focus {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+}
+
+.selectArrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #6b7280;
+}
+
+/* Badges */
+.optionBadge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+
+/* Service info row */
+.serviceInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+
+.serviceInfo svg {
+  flex-shrink: 0;
+  color: #0d9488;
+}
+
+/* Tooltip */
+.tooltipTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #6b7280;
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: help;
+  border: none;
+  position: relative;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.tooltipBox {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a2332;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.45;
+  width: 260px;
+  z-index: 50;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tooltipBox::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1a2332;
+}
+
+/* Volume section */
+.volumeInput {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #e5e7eb;
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0d9488;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.3);
+  transition: transform 0.15s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0d9488;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.3);
+}
+
+.numberInput {
+  width: 72px;
+  padding: 8px 10px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  text-align: center;
+  color: #1f2937;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.numberInput:focus {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+}
+
+.volumeUnit {
+  font-size: 0.8rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.fixedPriceNote {
+  font-size: 0.8rem;
+  color: #6b7280;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+.fixedPriceNote strong {
+  color: #1f2937;
+}
+
+/* Urgency pills */
+.urgencyGroup {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.urgencyPill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  font-family: inherit;
+}
+
+.urgencyPill:hover {
+  border-color: #0d9488;
+  background: rgba(13, 148, 136, 0.03);
+}
+
+.urgencyPillActive {
+  border-color: #0d9488;
+  background: rgba(13, 148, 136, 0.06);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+}
+
+.urgencyName {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.urgencyPillActive .urgencyName {
+  color: #0d9488;
+}
+
+.urgencyTime {
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.urgencyBadge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.urgencyPillActive .urgencyBadge {
+  background: #0d9488;
+  color: #fff;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 0;
+  border: none;
+}
+
+/* Result */
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resultRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.resultLabel {
+  color: #6b7280;
+}
+
+.resultValue {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.resultTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 16px;
+  background: linear-gradient(135deg, #1a2332 0%, #243044 100%);
+  border-radius: 12px;
+}
+
+.resultTotalLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.resultTotalValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  transition: opacity 0.15s;
+}
+
+.resultTotalCurrency {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 4px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Payment info */
+.paymentInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #6b7280;
+  padding: 8px 0 0;
+}
+
+.paymentInfo svg {
+  color: #d4a853;
+  flex-shrink: 0;
+}
+
+/* CTA */
+.cta {
+  display: block;
+  width: 100%;
+  padding: 14px 24px;
+  background: #0d9488;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.cta:hover {
+  background: #0b7c72;
+}
+
+.cta:active {
+  transform: scale(0.985);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .calculator {
+    border-radius: 12px;
+  }
+
+  .header {
+    padding: 20px 20px;
+  }
+
+  .body {
+    padding: 20px 20px 24px;
+  }
+
+  .headerTitle {
+    font-size: 1.1rem;
+  }
+
+  .urgencyGroup {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .urgencyPill {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 14px;
+  }
+
+  .resultTotalValue {
+    font-size: 1.5rem;
+  }
+
+  .tooltipBox {
+    width: 220px;
+    left: auto;
+    right: -8px;
+    transform: none;
+  }
+
+  .tooltipBox::after {
+    left: auto;
+    right: 12px;
+    transform: none;
+  }
+}
