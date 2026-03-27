@@ -315,10 +315,11 @@ const S = {
   },
   body: {
     padding: '24px 28px 28px',
-    position: 'relative',
+  },
+  slideWrapper: {
     overflow: 'hidden',
+    position: 'relative',
     width: '100%',
-    boxSizing: 'border-box',
   },
   slideContainer: {
     display: 'flex',
@@ -1462,15 +1463,17 @@ export default function DiagnosticForm() {
 
       {/* Body with slide */}
       <div className="scripta-diag-body" style={S.body}>
-        <div
-          style={{
-            ...S.slideContainer,
-            transform: `translateX(-${step * 100}%)`,
-          }}
-        >
-          {steps.map((renderFn, i) => (
-            <React.Fragment key={i}>{renderFn()}</React.Fragment>
-          ))}
+        <div style={S.slideWrapper}>
+          <div
+            style={{
+              ...S.slideContainer,
+              transform: `translateX(-${step * 100}%)`,
+            }}
+          >
+            {steps.map((renderFn, i) => (
+              <React.Fragment key={i}>{renderFn()}</React.Fragment>
+            ))}
+          </div>
         </div>
 
         {/* Nav */}
