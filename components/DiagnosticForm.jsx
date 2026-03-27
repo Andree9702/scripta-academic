@@ -317,6 +317,8 @@ const S = {
     padding: '24px 28px 28px',
     position: 'relative',
     overflow: 'hidden',
+    width: '100%',
+    boxSizing: 'border-box',
   },
   slideContainer: {
     display: 'flex',
