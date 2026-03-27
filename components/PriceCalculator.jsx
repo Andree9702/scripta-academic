@@ -97,13 +97,13 @@ function formatUSD(n) {
 
 const S = {
   calculator: {
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    maxWidth: 540,
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    maxWidth: 680,
     width: '100%',
     margin: '0 auto',
     background: '#ffffff',
-    borderRadius: 16,
-    boxShadow: '0 4px 24px rgba(26, 35, 50, 0.10), 0 1px 4px rgba(26, 35, 50, 0.06)',
+    borderRadius: 12,
+    boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
     overflow: 'hidden',
     color: '#1f2937',
   },
@@ -142,7 +142,7 @@ const S = {
     margin: '2px 0 0',
   },
   body: {
-    padding: '24px 28px 28px',
+    padding: '28px 28px 28px',
     display: 'flex',
     flexDirection: 'column',
     gap: 24,
@@ -178,9 +178,9 @@ const S = {
   },
   select: {
     width: '100%',
-    padding: '12px 40px 12px 14px',
+    padding: '12px 40px 12px 16px',
     border: '1.5px solid #e5e7eb',
-    borderRadius: 10,
+    borderRadius: 8,
     fontSize: '0.9rem',
     fontFamily: 'inherit',
     color: '#1f2937',
@@ -305,7 +305,7 @@ const S = {
     gap: 4,
     padding: '12px 8px',
     border: '1.5px solid #e5e7eb',
-    borderRadius: 10,
+    borderRadius: 8,
     background: '#fff',
     cursor: 'pointer',
     transition: 'all 0.2s',
@@ -406,14 +406,14 @@ const S = {
   cta: {
     display: 'block',
     width: '100%',
-    padding: '14px 24px',
+    padding: '14px 28px',
     background: '#0d9488',
     color: '#fff',
     fontSize: '0.95rem',
     fontWeight: 600,
     fontFamily: 'inherit',
     border: 'none',
-    borderRadius: 10,
+    borderRadius: 8,
     cursor: 'pointer',
     textAlign: 'center',
     textDecoration: 'none',
@@ -482,7 +482,7 @@ const INJECTED_CSS = `
       padding: 20px 20px !important;
     }
     .scripta-calc-body {
-      padding: 20px 20px 24px !important;
+      padding: 20px 20px 20px !important;
     }
     .scripta-calc-header-title {
       font-size: 1.1rem !important;

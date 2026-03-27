@@ -231,13 +231,13 @@ function IconChevron({ size = 16 }) {
 
 const S = {
   wizard: {
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    maxWidth: 600,
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    maxWidth: 680,
     width: '100%',
     margin: '0 auto',
     background: '#ffffff',
-    borderRadius: 16,
-    boxShadow: '0 4px 24px rgba(26,35,50,0.10), 0 1px 4px rgba(26,35,50,0.06)',
+    borderRadius: 12,
+    boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
     overflow: 'hidden',
     color: '#1f2937',
   },
@@ -314,20 +314,12 @@ const S = {
     background: '#0d9488',
   },
   body: {
-    padding: '24px 28px 28px',
+    padding: '28px 28px 28px',
   },
   slideWrapper: {
-    overflow: 'hidden',
-    position: 'relative',
     width: '100%',
   },
-  slideContainer: {
-    display: 'flex',
-    transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)',
-  },
   slide: {
-    minWidth: '100%',
-    flexShrink: 0,
   },
   stepQuestion: {
     fontSize: '1.05rem',
@@ -347,7 +339,7 @@ const S = {
     gap: 12,
     padding: '14px 16px',
     border: '1.5px solid #e5e7eb',
-    borderRadius: 10,
+    borderRadius: 8,
     background: '#fff',
     cursor: 'pointer',
     transition: 'all 0.2s',
@@ -526,7 +518,7 @@ const S = {
     gap: 4,
     padding: '12px 8px',
     border: '1.5px solid #e5e7eb',
-    borderRadius: 10,
+    borderRadius: 8,
     background: '#fff',
     cursor: 'pointer',
     transition: 'all 0.2s',
@@ -582,7 +574,7 @@ const S = {
     gap: 6,
     padding: '10px 18px',
     border: '1.5px solid #e5e7eb',
-    borderRadius: 10,
+    borderRadius: 8,
     background: '#fff',
     color: '#6b7280',
     fontSize: '0.88rem',
@@ -597,7 +589,7 @@ const S = {
     gap: 6,
     padding: '10px 24px',
     border: 'none',
-    borderRadius: 10,
+    borderRadius: 8,
     background: '#0d9488',
     color: '#fff',
     fontSize: '0.88rem',
@@ -740,14 +732,14 @@ const S = {
     justifyContent: 'center',
     gap: 8,
     width: '100%',
-    padding: '14px 24px',
+    padding: '14px 28px',
     background: '#0d9488',
     color: '#fff',
     fontSize: '0.95rem',
     fontWeight: 600,
     fontFamily: 'inherit',
     border: 'none',
-    borderRadius: 10,
+    borderRadius: 8,
     cursor: 'pointer',
     textAlign: 'center',
     textDecoration: 'none',
@@ -771,7 +763,7 @@ const S = {
     fontWeight: 500,
     fontFamily: 'inherit',
     border: '1.5px solid #e5e7eb',
-    borderRadius: 10,
+    borderRadius: 8,
     cursor: 'pointer',
     textDecoration: 'none',
     textAlign: 'center',
@@ -791,7 +783,7 @@ const S = {
     fontWeight: 500,
     fontFamily: 'inherit',
     border: '1.5px solid #e5e7eb',
-    borderRadius: 10,
+    borderRadius: 8,
     cursor: 'pointer',
     textDecoration: 'none',
     textAlign: 'center',
@@ -824,7 +816,7 @@ const INJECTED_CSS = `
     .scripta-diag-wizard { border-radius:12px !important; }
     .scripta-diag-header { padding:20px 20px !important; }
     .scripta-diag-progress { padding:12px 20px !important; }
-    .scripta-diag-body { padding:20px 20px 24px !important; }
+    .scripta-diag-body { padding:20px 20px 20px !important; }
     .scripta-diag-header-title { font-size:1.1rem !important; }
     .scripta-diag-urgency-group { grid-template-columns:1fr !important; gap:6px !important; }
     .scripta-diag-pill { flex-direction:row !important; justify-content:space-between !important; padding:10px 14px !important; }
@@ -1461,19 +1453,10 @@ export default function DiagnosticForm() {
       {/* Progress */}
       {renderProgressBar()}
 
-      {/* Body with slide */}
+      {/* Body with conditional step rendering */}
       <div className="scripta-diag-body" style={S.body}>
         <div style={S.slideWrapper}>
-          <div
-            style={{
-              ...S.slideContainer,
-              transform: `translateX(-${step * 100}%)`,
-            }}
-          >
-            {steps.map((renderFn, i) => (
-              <React.Fragment key={i}>{renderFn()}</React.Fragment>
-            ))}
-          </div>
+          {steps[step]()}
         </div>
 
         {/* Nav */}
