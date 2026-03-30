@@ -10,6 +10,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         calculator: resolve(__dirname, 'src/mount-calculator.jsx'),
+        committee: resolve(__dirname, 'src/mount-committee.jsx'),
         diagnostic: resolve(__dirname, 'src/mount-diagnostic.jsx'),
         integrity: resolve(__dirname, 'src/mount-integrity.jsx'),
         manuscript: resolve(__dirname, 'src/mount-manuscript.jsx'),
