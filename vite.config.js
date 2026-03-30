@@ -11,6 +11,7 @@ export default defineConfig({
       input: {
         calculator: resolve(__dirname, 'src/mount-calculator.jsx'),
         diagnostic: resolve(__dirname, 'src/mount-diagnostic.jsx'),
+        manuscript: resolve(__dirname, 'src/mount-manuscript.jsx'),
         sample: resolve(__dirname, 'src/mount-sample.jsx'),
       },
       output: {
