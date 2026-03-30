@@ -5,7 +5,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 const API_URL = 'https://scripta-api1.vercel.app/api/generate-sample';
 // During development, change to: 'http://localhost:3000/api/generate-sample'
 
-const MAX_SAMPLES_PER_SESSION = 3;
+const MAX_SAMPLES_PER_SESSION = 1;
 const TYPEWRITER_DELAY_MS = 18;
 const SESSION_KEY = 'scripta_samples_used';
 
@@ -690,20 +690,10 @@ export default function SampleGenerator() {
               )}
             </button>
 
-            {/* Samples counter */}
+            {/* Single free sample notice */}
             {!isRateLimited && (
               <div style={S.samplesCounter}>
-                <span>Muestras restantes:</span>
-                {Array.from({ length: MAX_SAMPLES_PER_SESSION }, (_, i) => (
-                  <span
-                    key={i}
-                    style={{
-                      ...S.samplesCounterDot,
-                      ...(i < samplesUsed ? S.samplesCounterDotUsed : {}),
-                    }}
-                  />
-                ))}
-                <span>{remaining}/{MAX_SAMPLES_PER_SESSION}</span>
+                <span>1 muestra gratuita por sesi&oacute;n</span>
               </div>
             )}
           </>
@@ -724,15 +714,17 @@ export default function SampleGenerator() {
         {(status === 'idle' && isRateLimited) && (
           <div style={S.limitedBox}>
             <span style={S.limitedText}>
-              Has usado tus 3 muestras gratuitas de esta sesión.
-              ¡Imagina la calidad de un documento completo!
+              Ya generaste tu muestra gratuita.
+              &iexcl;Imagina la calidad de un documento completo!
             </span>
             <a
-              href="mailto:info@scriptaacademic.com?subject=Quiero%20saber%20más%20sobre%20Scripta%20Academic"
+              href="https://wa.me/593991520523?text=Hola%2C%20prob%C3%A9%20la%20muestra%20gratuita%20y%20me%20interesa%20el%20servicio%20completo."
               className="scripta-gen-limited-cta"
               style={S.limitedCta}
+              target="_blank"
+              rel="noopener"
             >
-              Contáctanos para más
+              Solicitar servicio completo
             </a>
           </div>
         )}
@@ -762,39 +754,80 @@ export default function SampleGenerator() {
             </div>
 
             <div style={S.resultText}>
-              {displayText}
+              {(() => {
+                const text = displayText;
+                const refSep = text.indexOf('---REFERENCIAS---');
+                const paragraph = refSep > -1 ? text.slice(0, refSep).trim() : text;
+                return paragraph;
+              })()}
               {status === 'typing' && <span style={S.resultCursor} />}
             </div>
+
+            {/* References block */}
+            {status === 'done' && (() => {
+              const refSep = displayText.indexOf('---REFERENCIAS---');
+              if (refSep === -1) return null;
+              const refsRaw = displayText.slice(refSep + '---REFERENCIAS---'.length).trim();
+              if (!refsRaw || refsRaw.startsWith('(Sin referencias')) return null;
+
+              const refLines = refsRaw.split('\n').filter(l => l.trim());
+              return (
+                <div style={{
+                  marginTop: 4,
+                  padding: '12px 16px',
+                  background: '#f0fdf4',
+                  borderRadius: 8,
+                  borderLeft: '3px solid #0d9488',
+                }}>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 600, color: '#0d9488', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
+                    <IconCheck size={11} /> Referencias verificables
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#374151', lineHeight: 1.7 }}>
+                    {refLines.map((line, i) => {
+                      const doiMatch = line.match(/https:\/\/doi\.org\/\S+/);
+                      if (!doiMatch) return <div key={i} style={{ marginBottom: 4 }}>{line}</div>;
+                      const doiUrl = doiMatch[0].replace(/[).,]+$/, '');
+                      const before = line.slice(0, doiMatch.index);
+                      const after = line.slice(doiMatch.index + doiMatch[0].length);
+                      return (
+                        <div key={i} style={{ marginBottom: 4 }}>
+                          {before}
+                          <a href={doiUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#0d9488', textDecoration: 'underline' }}>
+                            {doiUrl}
+                          </a>
+                          {after}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()}
 
             {status === 'done' && (
               <div style={S.postResult}>
                 <p style={S.postResultMessage}>
-                  ¿Te gusta lo que ves? Esto es solo una muestra. Tu documento completo incluye{' '}
-                  <strong style={S.postResultStrong}>revisión humana experta</strong> + <strong style={S.postResultStrong}>Certificado de Integridad Académica</strong>.
+                  Esta es tu muestra exclusiva. &iquest;Listo para el documento completo? Incluye{' '}
+                  <strong style={S.postResultStrong}>revisi&oacute;n humana experta</strong> + <strong style={S.postResultStrong}>citas verificadas con DOI real</strong>.
                 </p>
 
                 <a
-                  href={`mailto:info@scriptaacademic.com?subject=${encodeURIComponent('Solicitud: Servicio completo Scripta Academic')}&body=${encodeURIComponent(`Hola, probé la muestra gratuita y me interesa el servicio completo.\n\nMi tema: ${tema}\nDisciplina: ${disciplina || 'No especificada'}\n\nQuedo atento/a a su respuesta.`)}`}
+                  href={`https://wa.me/593991520523?text=${encodeURIComponent(`Hola, probé la muestra gratuita y me interesa el servicio completo.\n\nMi tema: ${tema}\nDisciplina: ${disciplina || 'No especificada'}`)}`}
                   className="scripta-gen-btn"
                   style={S.ctaPrimary}
+                  target="_blank"
+                  rel="noopener"
                 >
                   Solicitar servicio completo
                 </a>
 
-                {remaining > 0 && (
-                  <button type="button" className="scripta-gen-cta-sec" style={S.ctaSecondary} onClick={reset}>
-                    <IconRefresh size={14} />
-                    Generar otra muestra ({remaining} restante{remaining !== 1 ? 's' : ''})
-                  </button>
-                )}
-
-                {remaining <= 0 && (
-                  <div style={S.limitedBox}>
-                    <span style={S.limitedText}>
-                      Has usado tus 3 muestras gratuitas. ¡Contáctanos para tu documento completo!
-                    </span>
-                  </div>
-                )}
+                <a
+                  href="mailto:info@scriptaacademic.com?subject=Quiero%20saber%20m%C3%A1s%20sobre%20Scripta%20Academic"
+                  className="scripta-gen-cta-sec"
+                  style={S.ctaSecondary}
+                >
+                  O escr&iacute;benos por email
+                </a>
               </div>
             )}
           </div>
