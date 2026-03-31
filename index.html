@@ -132,28 +132,28 @@
           <div class="service-card__icon"><i data-lucide="book-open"></i></div>
           <h3 class="service-card__title">Libros Académicos</h3>
           <p class="service-card__desc">Producción integral de libros universitarios y científicos. Maquetación profesional, gestión bibliográfica completa.</p>
-          <span class="service-card__price">Desde $800</span>
+          <span class="service-card__price">Desde $500</span>
         </article>
 
         <article class="service-card reveal-up">
           <div class="service-card__icon"><i data-lucide="file-text"></i></div>
           <h3 class="service-card__title">Artículos Científicos</h3>
           <p class="service-card__desc">Manuscritos IMRyD listos para revistas indexadas. Incluye análisis estadístico y cover letter.</p>
-          <span class="service-card__price">Desde $300</span>
+          <span class="service-card__price">Desde $150</span>
         </article>
 
         <article class="service-card reveal-up">
           <div class="service-card__icon"><i data-lucide="graduation-cap"></i></div>
           <h3 class="service-card__title">Tesis de Grado</h3>
           <p class="service-card__desc">Pregrado, maestría y doctorado. Del marco teórico a la defensa. Tu tesis, terminada y defendible.</p>
-          <span class="service-card__price">Desde $400</span>
+          <span class="service-card__price">Desde $250</span>
         </article>
 
         <article class="service-card reveal-up">
           <div class="service-card__icon"><i data-lucide="award"></i></div>
           <h3 class="service-card__title">Tesis Doctoral</h3>
           <p class="service-card__desc">Servicio premium. Asesoría metodológica integral, redacción completa, artículos derivados.</p>
-          <span class="service-card__price">Desde $1,500</span>
+          <span class="service-card__price">Desde $800</span>
         </article>
 
         <article class="service-card reveal-up">
@@ -167,21 +167,21 @@
           <div class="service-card__icon"><i data-lucide="search"></i></div>
           <h3 class="service-card__title">Revisión Sistemática</h3>
           <p class="service-card__desc">Protocolo PRISMA, búsqueda en bases de datos, meta-análisis cuantitativo.</p>
-          <span class="service-card__price">Desde $500</span>
+          <span class="service-card__price">Desde $250</span>
         </article>
 
         <article class="service-card reveal-up">
           <div class="service-card__icon"><i data-lucide="bar-chart-2"></i></div>
           <h3 class="service-card__title">Diseño Experimental</h3>
           <p class="service-card__desc">Diseño del estudio, análisis en R/Python, tablas e interpretación de resultados.</p>
-          <span class="service-card__price">Desde $200</span>
+          <span class="service-card__price">Desde $150</span>
         </article>
 
         <article class="service-card reveal-up">
           <div class="service-card__icon"><i data-lucide="book-marked"></i></div>
           <h3 class="service-card__title">Capítulos de Libro</h3>
           <p class="service-card__desc">Capítulos individuales para obras colectivas. Formato según perfil editorial del compilador.</p>
-          <span class="service-card__price">Desde $150</span>
+          <span class="service-card__price">Desde $120</span>
         </article>
 
         <article class="service-card reveal-up">
@@ -303,6 +303,28 @@
           <p class="guarantee-card__text">Cada entrega incluye un certificado que documenta exactamente qué hizo la inteligencia artificial y qué hizo el experto humano. Trazabilidad total para tu tranquilidad y la de tu institución.</p>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CALCULADORA DE PRECIOS (React component)
+       ================================================================ -->
+  <section class="section section--light" id="precios">
+    <div class="container">
+      <div class="react-widget">
+        <div id="scripta-calculator"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       DIAGNÓSTICO DE MANUSCRITO (React component — servicio de pago)
+       ================================================================ -->
+  <section class="section" id="diagnostico">
+    <div class="container">
+      <div class="react-widget">
+        <div id="scripta-manuscript"></div>
       </div>
     </div>
   </section>
@@ -438,49 +460,6 @@
   </section>
 
   <!-- ================================================================
-       TESTIMONIALES (ocultos temporalmente — pendiente de testimonios reales)
-       ================================================================ -->
-  <!--
-  <section class="testimonials section section--light" id="testimoniales">
-    <div class="container">
-      <div class="section__header reveal-up">
-        <h2 class="section__title">Lo que dicen nuestros colaboradores</h2>
-      </div>
-      <div class="testimonials__grid">
-
-        <blockquote class="testimonial reveal-up">
-          <div class="testimonial__quote" aria-hidden="true">"</div>
-          <p class="testimonial__text">Testimonio pendiente.</p>
-          <footer class="testimonial__author">
-            <span class="testimonial__name">Dr. J. B. Mina Ortiz</span>
-            <span class="testimonial__affiliation">Investigador, UNESUM — Ecuador</span>
-          </footer>
-        </blockquote>
-
-        <blockquote class="testimonial reveal-up">
-          <div class="testimonial__quote" aria-hidden="true">"</div>
-          <p class="testimonial__text">Testimonio pendiente.</p>
-          <footer class="testimonial__author">
-            <span class="testimonial__name">Dr. R. Herrera-Feijoo</span>
-            <span class="testimonial__affiliation">Investigador, UTEQ — Ecuador</span>
-          </footer>
-        </blockquote>
-
-        <blockquote class="testimonial reveal-up">
-          <div class="testimonial__quote" aria-hidden="true">"</div>
-          <p class="testimonial__text">Testimonio pendiente.</p>
-          <footer class="testimonial__author">
-            <span class="testimonial__name">Dra. L. Jara Zea</span>
-            <span class="testimonial__affiliation">Investigadora y Docente</span>
-          </footer>
-        </blockquote>
-
-      </div>
-    </div>
-  </section>
-  -->
-
-  <!-- ================================================================
        PROCESO DE TRABAJO
        ================================================================ -->
   <section class="process section section--dark" id="proceso">
@@ -532,28 +511,6 @@
           <p class="process__desc">Manuscrito listo para publicar. Los derechos son 100% tuyos.</p>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       CALCULADORA DE PRECIOS (React component)
-       ================================================================ -->
-  <section class="section section--light" id="precios">
-    <div class="container">
-      <div class="react-widget">
-        <div id="scripta-calculator"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       DIAGNÓSTICO DE MANUSCRITO (React component — servicio de pago)
-       ================================================================ -->
-  <section class="section" id="diagnostico">
-    <div class="container">
-      <div class="react-widget">
-        <div id="scripta-manuscript"></div>
       </div>
     </div>
   </section>
