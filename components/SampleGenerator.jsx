@@ -7,7 +7,8 @@ const API_URL = 'https://scripta-api1.vercel.app/api/generate-sample';
 
 const MAX_SAMPLES_PER_SESSION = 1;
 const TYPEWRITER_DELAY_MS = 18;
-const SESSION_KEY = 'scripta_samples_used';
+const STORAGE_KEY = 'scripta_demo_used';
+const STORAGE_TS_KEY = 'scripta_demo_ts';
 
 const DISCIPLINES = [
   'Medicina veterinaria',
@@ -34,7 +35,9 @@ const PARAGRAPH_TYPES = [
 
 function getSamplesUsed() {
   try {
-    return parseInt(sessionStorage.getItem(SESSION_KEY) || '0', 10);
+    const val = localStorage.getItem(STORAGE_KEY);
+    if (val === '1') return 1;
+    return 0;
   } catch {
     return 0;
   }
@@ -42,9 +45,9 @@ function getSamplesUsed() {
 
 function incrementSamplesUsed() {
   try {
-    const n = getSamplesUsed() + 1;
-    sessionStorage.setItem(SESSION_KEY, String(n));
-    return n;
+    localStorage.setItem(STORAGE_KEY, '1');
+    localStorage.setItem(STORAGE_TS_KEY, String(Date.now()));
+    return 1;
   } catch {
     return 1;
   }
@@ -693,7 +696,7 @@ export default function SampleGenerator() {
             {/* Single free sample notice */}
             {!isRateLimited && (
               <div style={S.samplesCounter}>
-                <span>1 muestra gratuita por sesi&oacute;n</span>
+                <span>1 muestra gratuita por visitante</span>
               </div>
             )}
           </>

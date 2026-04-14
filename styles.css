@@ -859,54 +859,164 @@ button {
    ---------------------------------------------------------------- */
 .testimonials__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--sp-4);
 }
 
-.testimonial {
+.testimonial-card {
   padding: var(--sp-4);
   border: 1px solid var(--divider-light);
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--white);
-  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration) var(--ease);
 }
 
-.testimonial__quote {
-  font-family: var(--font-serif);
-  font-size: 4rem;
-  line-height: 1;
-  color: rgba(13, 115, 119, 0.15);
-  position: absolute;
-  top: var(--sp-2);
-  left: var(--sp-3);
-  user-select: none;
+.testimonial-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-.testimonial__text {
+.testimonial-card__stars {
+  color: #d4a853;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-bottom: var(--sp-2);
+}
+
+.testimonial-card__text {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.7;
   color: #444;
-  margin-top: var(--sp-4);
   margin-bottom: var(--sp-3);
 }
 
-.testimonial__author {
+.testimonial-card__author {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  border-top: 1px solid var(--divider-light);
+  padding-top: var(--sp-2);
 }
 
-.testimonial__name {
-  font-weight: 600;
+.testimonial-card__name {
+  font-weight: 700;
   font-size: 0.875rem;
   color: var(--text-dark);
 }
 
-.testimonial__affiliation {
+.testimonial-card__role {
   font-size: 0.8125rem;
   color: #888;
+}
+
+/* ----------------------------------------------------------------
+   TECHNOLOGY SECTION
+   ---------------------------------------------------------------- */
+.tech__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-8);
+}
+
+.tech__card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--divider-dark);
+  border-radius: 10px;
+  padding: var(--sp-4);
+  text-align: center;
+  transition: all var(--duration) var(--ease);
+}
+
+.tech__card:hover {
+  border-color: var(--teal);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-3px);
+}
+
+.tech__number {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--teal-light);
+  line-height: 1.1;
+  margin-bottom: var(--sp-2);
+}
+
+.tech__card-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: var(--sp-1);
+}
+
+.tech__card-desc {
+  font-size: 0.85rem;
+  color: rgba(232, 232, 232, 0.6);
+  line-height: 1.65;
+}
+
+.tech__pipeline {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--divider-dark);
+  border-radius: 12px;
+  padding: var(--sp-4) var(--sp-6);
+  text-align: center;
+}
+
+.tech__pipeline-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--text-light);
+  margin-bottom: var(--sp-4);
+}
+
+.tech__pipeline-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+.tech__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.tech__step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(16, 163, 168, 0.15);
+  border: 1px solid var(--teal);
+  color: var(--teal-light);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.tech__step-label {
+  font-size: 0.75rem;
+  color: rgba(232, 232, 232, 0.7);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tech__step-arrow {
+  color: var(--teal-light);
+  font-size: 1.25rem;
+  opacity: 0.5;
 }
 
 /* ----------------------------------------------------------------
@@ -1222,6 +1332,18 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .tech__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tech__pipeline-steps {
+    gap: var(--sp-1);
+  }
+
+  .tech__step-arrow {
+    display: none;
+  }
+
   .process__timeline {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--sp-4);
@@ -1336,6 +1458,10 @@ button {
 
   .process__desc {
     font-size: 0.875rem;
+  }
+
+  .tech__grid {
+    grid-template-columns: 1fr;
   }
 
   /* Credentials scroll */
