@@ -23,7 +23,7 @@ const SERVICES = [
   {
     id: 'articulo',
     name: 'Artículo científico (redacción asistida)',
-    base: 350,
+    base: 300,
     unit: 'por artículo',
     pagesIncluded: 25,
     extraPageCost: 8,
